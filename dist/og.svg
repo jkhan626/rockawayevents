@@ -15,8 +15,8 @@
     <path d="M0 500c40 0 40-30 80-30s40 30 80 30 40-30 80-30 40 30 80 30 40-30 80-30 40 30 80 30 40-30 80-30 40 30 80 30 40-30 80-30 40 30 80 30 40-30 80-30 40 30 80 30 40-30 80-30 40 30 80 30"/>
     <path d="M0 566c40 0 40-30 80-30s40 30 80 30 40-30 80-30 40 30 80 30 40-30 80-30 40 30 80 30 40-30 80-30 40 30 80 30 40-30 80-30 40 30 80 30 40-30 80-30 40 30 80 30 40-30 80-30 40 30 80 30" opacity=".45"/>
   </g>
-  <text x="88" y="256" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-weight="700" font-size="112" letter-spacing="-3" fill="#16242F">Rockaway</text>
-  <text x="88" y="366" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-weight="700" font-size="112" letter-spacing="-3" fill="#1F6F8B">Events</text>
+  <text x="88" y="256" font-family="Plus Jakarta Sans, Georgia, 'Times New Roman', serif" font-weight="700" font-size="112" letter-spacing="-3" fill="#16242F">Rockaway</text>
+  <text x="88" y="366" font-family="Plus Jakarta Sans, Georgia, 'Times New Roman', serif" font-weight="700" font-size="112" letter-spacing="-3" fill="#1F6F8B">Events</text>
   <text x="90" y="424" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-weight="600" font-size="27" letter-spacing="1.4" fill="#5C6670">WHAT&#8217;S HAPPENING IN THE ROCKAWAYS</text>
   <text x="90" y="604" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-weight="600" font-size="24" fill="#8A6D3B">rockawayevents.org</text>
 </svg>
