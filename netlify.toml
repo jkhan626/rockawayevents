@@ -44,16 +44,21 @@
   to = "/.netlify/functions/moderate"
   status = 200
 
+[[redirects]]
+  from = "/api/subscribe"
+  to = "/.netlify/functions/subscribe"
+  status = 200
+
 # Nicer public URLs for the two subscribe feeds. These are what the footer
 # links to (webcal://rockawayevents.org/calendar.ics and /feed.xml).
 [[redirects]]
   from = "/calendar.ics"
-  to = "/api/calendar.ics"
+  to = "/.netlify/functions/calendar-ics"
   status = 200
 
 [[redirects]]
   from = "/feed.xml"
-  to = "/api/feed.xml"
+  to = "/.netlify/functions/rss"
   status = 200
 
 # ── Headers ──────────────────────────────────────────────────────────────────

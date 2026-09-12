@@ -15,6 +15,7 @@ to install and nothing for esbuild to bundle beyond our own files.
 | `GET /api/ferry` | `ferry.js` | 6 h | `?date=YYYY-MM-DD`, defaults to today ET |
 | `GET /api/pending?key=` | `pending.js` | `no-store` | 401 without the right key |
 | `POST /api/moderate` | `moderate.js` | `no-store` | `{ id, action, key, edits? }` |
+| `POST /api/subscribe` | `subscribe.js` | `no-store` | `{ email, name?, website? }`, weekly list signup |
 | (webhook) | `submission-created.js` | n/a | Netlify Forms calls it by filename |
 
 Shared code lives in `netlify/functions/lib/`:
@@ -30,6 +31,11 @@ Shared code lives in `netlify/functions/lib/`:
   `fflate` npm package that jamasha's `ferry-core.js` imports, which is the only
   reason this project needs no dependencies. Handles stored and deflate entries;
   no zip64 (GTFS feeds are nowhere near 4 GB).
+- `email.js` - Resend REST wrapper (`sendEmail`, `addContact`, `templates`), used
+  by `submission-created.js`, `moderate.js` and `subscribe.js`. No SDK, global
+  `fetch` only, 8 second timeout. Degrades to a logged no-op whenever
+  `RESEND_API_KEY` (or `RESEND_AUDIENCE_ID` for `addContact`) is unset, so a
+  missing key never fails the request that triggered the email.
 
 ## Env vars (Netlify site settings)
 
@@ -37,8 +43,41 @@ Shared code lives in `netlify/functions/lib/`:
 |---|---|---|
 | `NOTION_TOKEN` | events, calendar, rss, pending, moderate, submission-created | same internal integration as jamasha |
 | `MODERATE_KEY` | pending, moderate | admin password; 401 on mismatch, 500 when unset |
+| `RESEND_API_KEY` | submission-created, moderate, subscribe (via `lib/email.js`) | Resend API key. When unset, every email call logs and returns `{ok:false, skipped:true}` instead of failing the request. |
+| `RESEND_AUDIENCE_ID` | subscribe (via `addContact`) | id of the Resend audience the weekly list signs up to |
+| `EMAIL_FROM` | submission-created, moderate | From header for outgoing mail; defaults to `Rockaway Events <hello@rockawayevents.org>` |
+| `NOTIFY_EMAIL` | submission-created | who gets the "new event submitted" notice; defaults to `jamalknyc@gmail.com` |
 
 `conditions.js` and `ferry.js` need no secrets. Nothing is read from the client.
+
+### Setting up Resend
+
+1. Add `rockawayevents.org` as a sending domain in the Resend dashboard. It will
+   ask for three DNS records at the registrar (exact values come from the
+   dashboard once the domain is added, they are unique per account):
+   - an **MX** record on the `send` subdomain (e.g. `send.rockawayevents.org`)
+     pointing at Resend's mail server, so bounce/feedback handling works;
+   - a **DKIM TXT** record at `resend._domainkey` with the public key Resend
+     generates, so outgoing mail verifies;
+   - an **SPF TXT** record on the same `send` subdomain authorizing Resend to
+     send as that domain (`v=spf1 include:...`). This is separate from any SPF
+     record on the bare domain used for Gmail send-as.
+   Verify propagation the same way as the Gmail send-as setup:
+   `nslookup -type=mx send.rockawayevents.org 8.8.8.8` and
+   `nslookup -type=txt resend._domainkey.rockawayevents.org 8.8.8.8`.
+2. Create an Audience in Resend for the weekly list, copy its id into
+   `RESEND_AUDIENCE_ID`.
+3. Copy the API key into `RESEND_API_KEY` (Netlify site settings > Environment
+   variables).
+
+### Weekly newsletter plan
+
+The signup form on the site (`POST /api/subscribe`) only adds contacts to the
+Resend audience; it does not itself send anything on a schedule. The weekly
+digest is a manual (or later, cron-triggered) **Resend Broadcast** sent to that
+audience: pull the coming week's approved events from `/api/events`, drop them
+into a broadcast draft in the Resend dashboard (or a small script that calls
+the Broadcasts API), and send. Nothing here builds that yet.
 
 ## Testing locally
 
@@ -78,6 +117,10 @@ node -e "process.env.MODERATE_KEY='k';require('./netlify/functions/moderate.js')
 
 # the Netlify Forms webhook, without touching Notion (no token set)
 node -e "delete process.env.NOTION_TOKEN;require('./netlify/functions/submission-created.js').handler({body:JSON.stringify({payload:{form_name:'event-submit',data:{event:'Beach Yoga',date:'2026-10-04',category:'Run & Fitness,Surf & Beach',free:'on',url:'example.com/yoga'}}})}).then(r=>console.log(r.statusCode,r.body))"
+
+# subscribe: honeypot short-circuits, then a valid email with no Resend config
+node -e "delete process.env.RESEND_API_KEY;require('./netlify/functions/subscribe.js').handler({httpMethod:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email:'a@b.com',website:'spam'})}).then(r=>console.log(r.statusCode,r.body))"
+node -e "delete process.env.RESEND_API_KEY;require('./netlify/functions/subscribe.js').handler({httpMethod:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email:'not-an-email'})}).then(r=>console.log(r.statusCode,r.body))"
 ```
 
 Pure functions worth poking at directly:

@@ -8,6 +8,7 @@
 // failures are logged to the function log instead so Jamal can see them.
 
 const N = require("./lib/notion");
+const { sendEmail, templates } = require("./lib/email");
 
 const FORM_NAME = "event-submit";
 
@@ -152,7 +153,82 @@ function buildProperties(data) {
   if (validDate) props.Date = N.write.date(validDate);
   if (validEnd) props["End Date"] = N.write.date(validEnd);
 
-  return { props, event, date: validDate };
+  const submitterEmail = cleanEmail(data.email);
+  const submitterName = str(data.name, CAPS.name);
+
+  return {
+    props,
+    event,
+    date: validDate,
+    dateEnd: validEnd,
+    recurring,
+    time: str(data.time, CAPS.time),
+    venue: str(data.venue, CAPS.venue),
+    address: str(data.address, CAPS.address),
+    category: category.join(", "),
+    cost: str(data.cost, CAPS.cost),
+    free: truthy(data.free),
+    url: cleanUrl(data.url, CAPS.url),
+    instagram: cleanUrl(data.instagram, CAPS.instagram),
+    image: cleanUrl(data.image, CAPS.image),
+    description: str(data.description, CAPS.description),
+    days: days.join(", "),
+    submitterName,
+    submitterEmail,
+  };
+}
+
+// Fire the two notification emails. Never lets an email failure propagate:
+// each send is independently try/caught, and the whole thing is fire-and-forget
+// from the handler's point of view (awaited only so logs land before the
+// function is frozen, not because a failure should change the 200 response).
+async function notify(built, pageId) {
+  const notifyTo = process.env.NOTIFY_EMAIL || "jamalknyc@gmail.com";
+  const notionUrl = "https://notion.so/" + String(pageId).replace(/-/g, "");
+
+  try {
+    await sendEmail({
+      to: notifyTo,
+      subject: "New event submitted: " + built.event + " (" + (built.date || "no date") + ")",
+      html: templates.newSubmission({
+        notionUrl,
+        fields: [
+          { label: "Event", value: built.event },
+          { label: "Date", value: built.date },
+          { label: "End Date", value: built.dateEnd },
+          { label: "Recurring", value: built.recurring },
+          { label: "Days", value: built.days },
+          { label: "Time", value: built.time },
+          { label: "Venue", value: built.venue },
+          { label: "Address", value: built.address },
+          { label: "Category", value: built.category },
+          { label: "Cost", value: built.cost },
+          { label: "Free", value: built.free ? "Yes" : "" },
+          { label: "URL", value: built.url },
+          { label: "Instagram", value: built.instagram },
+          { label: "Image", value: built.image },
+          { label: "Description", value: built.description },
+          { label: "Submitter Name", value: built.submitterName },
+          { label: "Submitter Email", value: built.submitterEmail },
+        ],
+      }),
+    });
+  } catch (err) {
+    console.error("submission-created: notify email threw: " + String((err && err.message) || err));
+  }
+
+  if (built.submitterEmail) {
+    try {
+      await sendEmail({
+        to: built.submitterEmail,
+        subject: "Thanks, we got your event",
+        replyTo: "hello@rockawayevents.org",
+        html: templates.submissionConfirmation({ event: built.event, date: built.date }),
+      });
+    } catch (err) {
+      console.error("submission-created: confirmation email threw: " + String((err && err.message) || err));
+    }
+  }
 }
 
 /* ---- handler ----------------------------------------------------------- */
@@ -202,6 +278,7 @@ exports.handler = async (event) => {
     console.log(
       "submission-created: created Pending page " + page.id + " for " + built.event
     );
+    await notify(built, page.id);
     return ok({ ok: true, id: page.id });
   } catch (err) {
     console.error(

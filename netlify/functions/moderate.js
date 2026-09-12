@@ -7,6 +7,7 @@
 
 const N = require("./lib/notion");
 const { requireKey, privateJson } = require("./lib/auth");
+const { sendEmail, templates } = require("./lib/email");
 
 const ACTIONS = {
   approve: "Approved",
@@ -64,6 +65,12 @@ function editProperties(edits) {
     // An unparseable date is ignored rather than written as null, so a typo in
     // the admin form cannot silently wipe a good date.
   }
+  if (has("dateEnd")) {
+    const v = trim(edits.dateEnd).slice(0, 10);
+    if (!v) props["End Date"] = N.write.date(null);
+    else if (N.isValidYmd(v)) props["End Date"] = N.write.date(v);
+  }
+  if (has("image")) props.Image = N.write.url(cleanUrl(edits.image, CAPS.url));
   if (has("time")) props.Time = N.write.rich(trim(edits.time, CAPS.time));
   if (has("venue")) props.Venue = N.write.rich(trim(edits.venue, CAPS.venue));
   if (has("address")) props.Address = N.write.rich(trim(edits.address, CAPS.address));
@@ -88,6 +95,23 @@ function editProperties(edits) {
     props.Category = N.write.multi(picked);
   }
   return props;
+}
+
+// Email the submitter that their event is live, if they gave an email.
+async function notifyApproved(page) {
+  const submitterEmail = N.getEmail(page, "Submitter Email");
+  if (!submitterEmail) return;
+
+  const eventTitle = N.getTitle(page, "Event");
+  const date = N.getDate(page, "Date");
+  const url = "https://rockawayevents.org/#e=" + page.id;
+
+  await sendEmail({
+    to: submitterEmail,
+    subject: "Your event is live on rockawayevents.org",
+    replyTo: "hello@rockawayevents.org",
+    html: templates.eventApproved({ event: eventTitle, date, url }),
+  });
 }
 
 exports.handler = async (event) => {
@@ -129,8 +153,21 @@ exports.handler = async (event) => {
   props.Status = N.write.select(status);
 
   try {
-    await N.updatePage(id, props, token);
+    const page = await N.updatePage(id, props, token);
     console.log("moderate: " + action + " " + id + " (" + Object.keys(props).join(",") + ")");
+
+    if (action === "approve") {
+      // Awaited so the send completes before Netlify may freeze this
+      // function, but wrapped so an email failure never changes the 200
+      // response below. The PATCH response already carries the full updated
+      // page, so no extra GET is needed to read the submitter's email.
+      try {
+        await notifyApproved(page);
+      } catch (err) {
+        console.error("moderate: notifyApproved threw: " + String((err && err.message) || err));
+      }
+    }
+
     return privateJson(200, {
       ok: true,
       id,
@@ -149,3 +186,4 @@ exports.handler = async (event) => {
 
 // exported for tests
 exports.editProperties = editProperties;
+exports.notifyApproved = notifyApproved;
