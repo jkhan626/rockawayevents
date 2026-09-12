@@ -91,3 +91,7 @@ Checklist of Instagram accounts that post Rockaway events, for the daily Instagr
 - **ROCK! AWAY! / Max Power app-site (new 2026):** `https://maxpowerrockaway.com/` — launched for the 2026 ROCK! AWAY! Summer Fest, aims to become a year-round guide; no public API found.
 - **GrowNYC market locations:** `https://grownyc.org/locations/`
 - **Riis Beach Co.:** `https://www.riisbeach.nyc/events-this-week`
+
+## Verified additions
+
+- **@rockawayrunningclub** (VERIFIED 2026-09-12): Rockaway Running Club. Free 3-mile group runs, Tue 6:30 AM and Thu 6 PM from the boardwalk at Beach 81st St. Note: @rockawayrunclub is an empty placeholder account, do not use it.
