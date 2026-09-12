@@ -16,6 +16,7 @@ to install and nothing for esbuild to bundle beyond our own files.
 | `GET /api/pending?key=` | `pending.js` | `no-store` | 401 without the right key |
 | `POST /api/moderate` | `moderate.js` | `no-store` | `{ id, action, key, edits? }` |
 | `POST /api/subscribe` | `subscribe.js` | `no-store` | `{ email, name?, website? }`, weekly list signup |
+| `GET /api/enrich-images?key=` | `enrich-images.js` | `no-store` | also runs on a schedule, see below |
 | (webhook) | `submission-created.js` | n/a | Netlify Forms calls it by filename |
 
 Shared code lives in `netlify/functions/lib/`:
@@ -31,11 +32,84 @@ Shared code lives in `netlify/functions/lib/`:
   `fflate` npm package that jamasha's `ferry-core.js` imports, which is the only
   reason this project needs no dependencies. Handles stored and deflate entries;
   no zip64 (GTFS feeds are nowhere near 4 GB).
+- `events-core.js` also owns `IMAGE_NONE` and `cleanImage()`, the two rules
+  every Image column value goes through: the sentinel reads back as `null`, and
+  any `cdninstagram.com` / `fbcdn.net` URL is refused outright.
 - `email.js` - Resend REST wrapper (`sendEmail`, `addContact`, `templates`), used
   by `submission-created.js`, `moderate.js` and `subscribe.js`. No SDK, global
   `fetch` only, 8 second timeout. Degrades to a logged no-op whenever
   `RESEND_API_KEY` (or `RESEND_AUDIENCE_ID` for `addContact`) is unset, so a
   missing key never fails the request that triggered the email.
+
+## og:image enrichment (`enrich-images.js`)
+
+Nearly every row in both databases arrives with an empty `Image` column, which
+is why the feed used to be a wall of generated gradient posters. This function
+fills that column in from each event's own page.
+
+**When it runs.** `netlify.toml` schedules it at `20 8 * * *`, which is 4:20 AM
+ET, about 70 minutes after the 3:10 AM routine finishes writing the night's new
+rows. It is also reachable by hand:
+
+```
+GET /api/enrich-images?key=<MODERATE_KEY>[&limit=N][&dry=1]
+```
+
+Netlify's scheduler POSTs a body of `{"next_run": "..."}` and sends no query
+string, so "no key **and** a body mentioning `next_run`" is treated as the
+scheduled call and everything else has to present the key (`lib/auth.js`).
+`&dry=1` resolves images and reports them without writing to Notion.
+
+**What it picks up.** Both databases, filtered to rows that are still upcoming
+(the legacy DB uses the same window as `events-core`; the curated DB also keeps
+recurring series whose start date is in the past) and whose `Image` is empty.
+At most 40 rows a run, earliest event first, eight pages in flight at once, and
+the whole run stops starting new rows after 20 seconds so it cannot be killed
+mid-write by the function timeout. Whatever it did not reach is simply picked up
+by the next run.
+
+**Per row.** Fetch the `URL` (or, when that is empty, the `Instagram` link) with
+a browser User-Agent, an 8 second timeout and a 200 KB read cap; pull
+`og:image:secure_url`, `og:image`, `og:image:url`, `twitter:image`,
+`twitter:image:src` and `<link rel="image_src">` in that order; resolve relative
+URLs against the page it landed on; decode HTML entities; drop `data:` and
+non-http(s) candidates; then confirm the winner with a HEAD (falling back to a
+2 KB ranged GET, because plenty of CDNs answer HEAD with 405) that returns an
+`image/*` content type, is not SVG and is not under 200 bytes. The result is
+written with `PATCH /v1/pages/{id}`.
+
+**Three deliberate refusals.**
+
+1. *Instagram, always.* `instagram.com`, `instagr.am`, `cdninstagram.com` and
+   `fbcdn.net` are never fetched and never stored, as either a link or an
+   og:image. Those CDN URLs are signed, expire within days and refuse
+   hotlinking, so a card built on one looks right on Monday and is broken by
+   Thursday. An Instagram row is left completely untouched, with **no**
+   sentinel, so the daily local scan can still claim it: that task saves the
+   post photo with `scripts/save-ig-image.js` into `dist/img/ig/<postcode>.jpg`
+   and sets `Image` to `https://rockawayevents.org/img/ig/<postcode>.jpg`.
+2. *Logos.* A candidate whose filename reads as branding (`logo`, `wordmark`,
+   `seal`, `favicon`, ...) is skipped, and four hosts whose og:image is one
+   fixed brand image for the whole site are not fetched at all: `eatrippers.com`,
+   `tapthatrbny.com`, `connollysrbny.com`, `jbrpc.org`. A stretched logo looks
+   worse on a card than the venue photo it would displace. That list is a
+   constant near the top of the file; check a host by hand before adding to it.
+3. *Nothing at all.* A page that yields no usable image gets the sentinel
+   `Image = https://rockawayevents.org/img/none`, purely so the next run skips
+   it. `events-core.js` reads that value back as `image: null`, and the
+   frontend falls through to its venue or category photo.
+
+**Output.** A JSON summary, also logged as one line:
+`{scanned, updated, none, skipped, errors, candidates, noLink, truncated, ms}`
+plus a `details[]` entry per row saying which link was tried and why it did or
+did not produce a picture.
+
+**Testing.** `node scripts/test-enrich-images.js` runs 75 offline assertions:
+the parser against the HTML shapes real pages use, and a full `runEnrichment()`
+driven by a stubbed `global.fetch` that plays both Notion and the open web, so
+the writes, the sentinel, the Instagram skip and the error paths are all covered
+with no token. Add `--live` to fetch real event pages and print what each one
+advertises; nothing is written to Notion in either mode.
 
 ## Env vars (Netlify site settings)
 
@@ -192,4 +266,5 @@ Every `/api/*` route is a **200 rewrite** so the browser keeps the pretty URL.
 `/calendar.ics` and `/feed.xml` rewrite to their API routes for nicer subscribe
 links. Headers: `X-Content-Type-Options: nosniff` and `X-Frame-Options: DENY` on
 `/*`, `X-Robots-Tag: noindex` plus `no-store` on `/admin` and `/admin/*`, and a
-one-year immutable cache on `/icons/*`.
+one-year immutable cache on `/icons/*` and `/img/*`. `[functions."enrich-images"]`
+carries the nightly `schedule`.

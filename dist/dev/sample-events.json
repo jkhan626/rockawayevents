@@ -1,7 +1,7 @@
 {
-  "updated": "2026-09-12T11:05:00.000Z",
+  "updated": "2026-09-12T20:11:36.625Z",
   "today": "2026-09-12",
-  "count": 33,
+  "count": 39,
   "events": [
     {
       "id": "s1_2026-09-12",
@@ -13,7 +13,9 @@
       "timeStart": "06:15",
       "venue": "Beach 67th Street",
       "address": "Beach 67th St & Shore Front Pkwy, Arverne, NY 11692",
-      "category": ["Surf & Beach"],
+      "category": [
+        "Surf & Beach"
+      ],
       "cost": "Free",
       "free": true,
       "url": "",
@@ -23,7 +25,9 @@
       "source": "Community",
       "featured": false,
       "recurring": "Weekly",
-      "days": ["Sat"]
+      "days": [
+        "Sat"
+      ]
     },
     {
       "id": "o1",
@@ -34,7 +38,11 @@
       "timeStart": "12:00",
       "venue": "Beach 97th Street Concessions",
       "address": "Beach 97th St & Shore Front Pkwy, Rockaway Beach, NY 11693",
-      "category": ["Market", "Food & Drink", "Music"],
+      "category": [
+        "Market",
+        "Food & Drink",
+        "Music"
+      ],
       "cost": "Free entry",
       "free": true,
       "url": "https://example.com/bazaar",
@@ -55,7 +63,10 @@
       "timeStart": "19:00",
       "venue": "Riis Park Beach Bazaar",
       "address": "157 Rockaway Point Blvd, Breezy Point, NY 11697",
-      "category": ["Music", "Nightlife"],
+      "category": [
+        "Music",
+        "Nightlife"
+      ],
       "cost": "$15",
       "free": false,
       "url": "https://example.com/reggae",
@@ -77,17 +88,22 @@
       "timeStart": "09:00",
       "venue": "Beach 95th Street Plaza",
       "address": "Beach 95th St & Rockaway Beach Blvd, Rockaway Beach, NY 11693",
-      "category": ["Market", "Food & Drink"],
+      "category": [
+        "Market",
+        "Food & Drink"
+      ],
       "cost": "Free",
       "free": true,
       "url": "https://example.com/market",
       "instagram": "",
-      "image": "",
+      "image": "https://rockawayevents.org/img/none",
       "description": "Produce from upstate farms, bread, fish, honey, and coffee. EBT and Health Bucks accepted.",
       "source": "Routine",
       "featured": false,
       "recurring": "Weekly",
-      "days": ["Sun"]
+      "days": [
+        "Sun"
+      ]
     },
     {
       "id": "o3",
@@ -98,12 +114,15 @@
       "timeStart": "09:00",
       "venue": "Beach 116th Street",
       "address": "Beach 116th St & Shore Front Pkwy, Rockaway Park, NY 11694",
-      "category": ["Volunteer", "Community"],
+      "category": [
+        "Volunteer",
+        "Community"
+      ],
       "cost": "Free",
       "free": true,
       "url": "",
       "instagram": "https://instagram.com/rockawaybeachcleanup",
-      "image": "",
+      "image": "https://z-p3-scontent.xx.fbcdn.net/v/t39.30808-6/expired-signed.jpg?_nc_sid=1",
       "description": "Gloves, bags, and grabbers provided. Meet at the boardwalk ramp. Two hours, coffee after.",
       "source": "Community",
       "featured": false,
@@ -119,7 +138,9 @@
       "timeStart": "19:30",
       "venue": "The Rockaway Hotel",
       "address": "108-10 Rockaway Beach Dr, Rockaway Park, NY 11694",
-      "category": ["Arts & Culture"],
+      "category": [
+        "Arts & Culture"
+      ],
       "cost": "$12",
       "free": false,
       "url": "https://example.com/rff",
@@ -141,7 +162,10 @@
       "timeStart": "07:00",
       "venue": "Beach 86th Street Boardwalk",
       "address": "Beach 86th St & Shore Front Pkwy, Rockaway Beach, NY 11693",
-      "category": ["Run & Fitness", "Surf & Beach"],
+      "category": [
+        "Run & Fitness",
+        "Surf & Beach"
+      ],
       "cost": "Donation",
       "free": false,
       "url": "",
@@ -151,7 +175,9 @@
       "source": "Instagram",
       "featured": false,
       "recurring": "Weekly",
-      "days": ["Mon"]
+      "days": [
+        "Mon"
+      ]
     },
     {
       "id": "o5",
@@ -162,7 +188,9 @@
       "timeStart": "11:00",
       "venue": "Peninsula Library",
       "address": "92-25 Rockaway Beach Blvd, Rockaway Beach, NY 11693",
-      "category": ["Kids & Family"],
+      "category": [
+        "Kids & Family"
+      ],
       "cost": "Free",
       "free": true,
       "url": "https://example.com/library",
@@ -183,7 +211,9 @@
       "timeStart": "19:00",
       "venue": "Knights of Columbus Hall",
       "address": "333 Beach 90th St, Rockaway Beach, NY 11693",
-      "category": ["Community"],
+      "category": [
+        "Community"
+      ],
       "cost": "Free",
       "free": true,
       "url": "",
@@ -192,6 +222,30 @@
       "description": "Monthly meeting. On the agenda this month: the boardwalk concession leases and the Beach 108th street end.",
       "source": "Community",
       "featured": false,
+      "recurring": "None",
+      "days": []
+    },
+    {
+      "id": "s90_2026-09-16",
+      "event": "Chair Yoga at RISE",
+      "date": "2026-09-16",
+      "dateEnd": "2026-09-21",
+      "time": "10:30 AM",
+      "timeStart": "10:30",
+      "venue": "RISE Center",
+      "address": "58-03 Rockaway Beach Blvd, Arverne, NY 11692",
+      "category": [
+        "Run & Fitness",
+        "Community"
+      ],
+      "cost": "Free",
+      "free": true,
+      "url": "https://www.riserockaway.org/rise/events/",
+      "instagram": "",
+      "image": "",
+      "description": "Gentle seated and standing work, no floor mat needed. Walk in.",
+      "source": "Community",
+      "featured": true,
       "recurring": "None",
       "days": []
     },
@@ -205,17 +259,21 @@
       "timeStart": "18:30",
       "venue": "Beach 90th Street Boardwalk",
       "address": "Beach 90th St & Shore Front Pkwy, Rockaway Beach, NY 11693",
-      "category": ["Run & Fitness"],
+      "category": [
+        "Run & Fitness"
+      ],
       "cost": "Free",
       "free": true,
       "url": "",
       "instagram": "https://instagram.com/rockawayrunclub",
-      "image": "",
+      "image": "https://rockawayevents.org/img/none",
       "description": "Three and five mile routes on the boardwalk, no one gets dropped. Stick around for a drink after.",
       "source": "Community",
       "featured": false,
       "recurring": "Weekly",
-      "days": ["Wed"]
+      "days": [
+        "Wed"
+      ]
     },
     {
       "id": "o7",
@@ -226,7 +284,10 @@
       "timeStart": "20:00",
       "venue": "Bungalow Bar",
       "address": "377 Beach 92nd St, Rockaway Beach, NY 11693",
-      "category": ["Music", "Nightlife"],
+      "category": [
+        "Music",
+        "Nightlife"
+      ],
       "cost": "Free",
       "free": true,
       "url": "",
@@ -246,9 +307,12 @@
       "dateEnd": null,
       "time": "7:30 PM",
       "timeStart": "19:30",
-      "venue": "Rockaway Brewing Company",
-      "address": "415 Beach 72nd St, Arverne, NY 11692",
-      "category": ["Nightlife", "Community"],
+      "venue": "Tap That",
+      "address": "94-10 Rockaway Beach Blvd, Rockaway Beach, NY 11693",
+      "category": [
+        "Nightlife",
+        "Community"
+      ],
       "cost": "Free to play",
       "free": true,
       "url": "",
@@ -258,25 +322,30 @@
       "source": "Community",
       "featured": false,
       "recurring": "Weekly",
-      "days": ["Thu"]
+      "days": [
+        "Thu"
+      ]
     },
     {
-      "id": "o8",
-      "event": "Rockaway Film Festival",
-      "date": "2026-09-18",
+      "id": "s91_2026-09-17",
+      "event": "Open Mic Night",
+      "date": "2026-09-17",
       "dateEnd": "2026-09-21",
-      "time": "Various times",
-      "timeStart": null,
-      "venue": "Venues across the peninsula",
-      "address": "Rockaway Beach, NY 11693",
-      "category": ["Arts & Culture"],
-      "cost": "$12 per screening, $60 pass",
+      "time": "8 PM",
+      "timeStart": "20:00",
+      "venue": "Connolly's",
+      "address": "155 Beach 95th St, Rockaway Beach, NY 11693",
+      "category": [
+        "Music",
+        "Nightlife"
+      ],
+      "cost": "No cover",
       "free": false,
-      "url": "https://example.com/rff-full",
+      "url": "https://www.connollysrbny.com/upcoming-events",
       "instagram": "",
       "image": "",
-      "description": "Four days of screenings in bars, church halls, and on the beach. Full schedule on the festival site.",
-      "source": "Web",
+      "description": "Sign-up at the bar from 7:30. Two songs each.",
+      "source": "Community",
       "featured": true,
       "recurring": "None",
       "days": []
@@ -288,9 +357,11 @@
       "dateEnd": null,
       "time": "6:00 PM",
       "timeStart": "18:00",
-      "venue": "Rockaway Beach Surf Club",
-      "address": "302 Beach 87th St, Rockaway Beach, NY 11693",
-      "category": ["Food & Drink"],
+      "venue": "Rippers",
+      "address": "Beach 86th St boardwalk, Rockaway Beach, NY 11693",
+      "category": [
+        "Food & Drink"
+      ],
       "cost": "$20",
       "free": false,
       "url": "",
@@ -299,6 +370,53 @@
       "description": "Fried local fluke, slaw, and corn. Cash at the door, sells out most years.",
       "source": "Instagram",
       "featured": false,
+      "recurring": "None",
+      "days": []
+    },
+    {
+      "id": "s92_2026-09-18",
+      "event": "Live Music at Caracas",
+      "date": "2026-09-18",
+      "dateEnd": "2026-09-21",
+      "time": "7 PM",
+      "timeStart": "19:00",
+      "venue": "Caracas Arepa Bar",
+      "address": "106-01 Shore Front Pkwy, Rockaway Beach, NY 11694",
+      "category": [
+        "Music",
+        "Food & Drink"
+      ],
+      "cost": "Free",
+      "free": true,
+      "url": "https://www.caracasarepabar.com/rockaway-1",
+      "instagram": "",
+      "image": "",
+      "description": "Arepas and a three piece band on the back patio.",
+      "source": "Community",
+      "featured": true,
+      "recurring": "None",
+      "days": []
+    },
+    {
+      "id": "o8",
+      "event": "Rockaway Film Festival",
+      "date": "2026-09-18",
+      "dateEnd": "2026-09-21",
+      "time": "Various times",
+      "timeStart": null,
+      "venue": "Venues across the peninsula",
+      "address": "Rockaway Beach, NY 11693",
+      "category": [
+        "Arts & Culture"
+      ],
+      "cost": "$12 per screening, $60 pass",
+      "free": false,
+      "url": "https://example.com/rff-full",
+      "instagram": "",
+      "image": "",
+      "description": "Four days of screenings in bars, church halls, and on the beach. Full schedule on the festival site.",
+      "source": "Web",
+      "featured": true,
       "recurring": "None",
       "days": []
     },
@@ -312,7 +430,9 @@
       "timeStart": "06:15",
       "venue": "Beach 67th Street",
       "address": "Beach 67th St & Shore Front Pkwy, Arverne, NY 11692",
-      "category": ["Surf & Beach"],
+      "category": [
+        "Surf & Beach"
+      ],
       "cost": "Free",
       "free": true,
       "url": "",
@@ -322,24 +442,29 @@
       "source": "Community",
       "featured": false,
       "recurring": "Weekly",
-      "days": ["Sat"]
+      "days": [
+        "Sat"
+      ]
     },
     {
-      "id": "o10",
-      "event": "Rockaway Skate Jam",
+      "id": "s93_2026-09-19",
+      "event": "Guided Walk at Jamaica Bay Wildlife Refuge",
       "date": "2026-09-19",
-      "dateEnd": null,
-      "time": "11:00 AM - 4:00 PM",
-      "timeStart": "11:00",
-      "venue": "Beach 91st Street Skate Park",
-      "address": "Beach 91st St & Shore Front Pkwy, Rockaway Beach, NY 11693",
-      "category": ["Sports", "Kids & Family"],
+      "dateEnd": "2026-09-21",
+      "time": "9 AM",
+      "timeStart": "09:00",
+      "venue": "Jamaica Bay Wildlife Refuge",
+      "address": "175-10 Cross Bay Blvd, Broad Channel, NY 11693",
+      "category": [
+        "Outdoors",
+        "Kids & Family"
+      ],
       "cost": "Free",
       "free": true,
-      "url": "",
+      "url": "https://www.nps.gov/gate/",
       "instagram": "",
       "image": "",
-      "description": "Best trick contest at 2 PM with three age brackets. Free helmets for kids while they last.",
+      "description": "Two hours on the West Pond trail. Binoculars provided.",
       "source": "Community",
       "featured": true,
       "recurring": "None",
@@ -354,7 +479,9 @@
       "timeStart": "10:00",
       "venue": "Fort Tilden",
       "address": "169 State Rd, Breezy Point, NY 11697",
-      "category": ["Outdoors"],
+      "category": [
+        "Outdoors"
+      ],
       "cost": "Free",
       "free": true,
       "url": "https://example.com/tilden",
@@ -363,6 +490,30 @@
       "description": "Ranger led walk through the dunes and the old battery. Ninety minutes, wear closed shoes.",
       "source": "NYC Parks",
       "featured": false,
+      "recurring": "None",
+      "days": []
+    },
+    {
+      "id": "o10",
+      "event": "Rockaway Skate Jam",
+      "date": "2026-09-19",
+      "dateEnd": null,
+      "time": "11:00 AM - 4:00 PM",
+      "timeStart": "11:00",
+      "venue": "Beach 91st Street Skate Park",
+      "address": "Beach 91st St & Shore Front Pkwy, Rockaway Beach, NY 11693",
+      "category": [
+        "Sports",
+        "Kids & Family"
+      ],
+      "cost": "Free",
+      "free": true,
+      "url": "",
+      "instagram": "",
+      "image": "",
+      "description": "Best trick contest at 2 PM with three age brackets. Free helmets for kids while they last.",
+      "source": "Community",
+      "featured": true,
       "recurring": "None",
       "days": []
     },
@@ -376,7 +527,10 @@
       "timeStart": "09:00",
       "venue": "Beach 95th Street Plaza",
       "address": "Beach 95th St & Rockaway Beach Blvd, Rockaway Beach, NY 11693",
-      "category": ["Market", "Food & Drink"],
+      "category": [
+        "Market",
+        "Food & Drink"
+      ],
       "cost": "Free",
       "free": true,
       "url": "https://example.com/market",
@@ -386,7 +540,32 @@
       "source": "Routine",
       "featured": false,
       "recurring": "Weekly",
-      "days": ["Sun"]
+      "days": [
+        "Sun"
+      ]
+    },
+    {
+      "id": "s94_2026-09-20",
+      "event": "Peninsula Swap Meet",
+      "date": "2026-09-20",
+      "dateEnd": "2026-09-21",
+      "time": "11 AM to 3 PM",
+      "timeStart": "11:00",
+      "venue": "",
+      "address": "",
+      "category": [
+        "Other"
+      ],
+      "cost": "Free",
+      "free": true,
+      "url": "",
+      "instagram": "",
+      "image": "",
+      "description": "Bring what you no longer need, take what you do.",
+      "source": "Community",
+      "featured": true,
+      "recurring": "None",
+      "days": []
     },
     {
       "id": "o12",
@@ -397,7 +576,10 @@
       "timeStart": "13:00",
       "venue": "Beach 108th Street to Beach 116th Street",
       "address": "Beach 108th St & Rockaway Beach Blvd, Rockaway Park, NY 11694",
-      "category": ["Arts & Culture", "Community"],
+      "category": [
+        "Arts & Culture",
+        "Community"
+      ],
       "cost": "Free",
       "free": true,
       "url": "https://example.com/artwalk",
@@ -419,7 +601,10 @@
       "timeStart": "07:00",
       "venue": "Beach 86th Street Boardwalk",
       "address": "Beach 86th St & Shore Front Pkwy, Rockaway Beach, NY 11693",
-      "category": ["Run & Fitness", "Surf & Beach"],
+      "category": [
+        "Run & Fitness",
+        "Surf & Beach"
+      ],
       "cost": "Donation",
       "free": false,
       "url": "",
@@ -429,7 +614,32 @@
       "source": "Instagram",
       "featured": false,
       "recurring": "Weekly",
-      "days": ["Mon"]
+      "days": [
+        "Mon"
+      ]
+    },
+    {
+      "id": "s95_2026-09-21",
+      "event": "Rockaway Times Things To Do",
+      "date": "2026-09-21",
+      "dateEnd": "2026-09-21",
+      "time": "All day",
+      "timeStart": null,
+      "venue": "Rockaway Beach Boardwalk",
+      "address": "",
+      "category": [
+        "Community"
+      ],
+      "cost": "",
+      "free": false,
+      "url": "https://rockawaytimes.com/things-to-do-205/",
+      "instagram": "",
+      "image": "https://rockawaytimes.com/wp-content/uploads/2022/11/THINGS-TO-DO_big.jpg",
+      "description": "A row whose own og:image was found, so no fallback is used.",
+      "source": "Routine",
+      "featured": true,
+      "recurring": "None",
+      "days": []
     },
     {
       "id": "o13",
@@ -440,7 +650,10 @@
       "timeStart": "17:30",
       "venue": "Beach 67th Street",
       "address": "Beach 67th St & Shore Front Pkwy, Arverne, NY 11692",
-      "category": ["Surf & Beach", "Run & Fitness"],
+      "category": [
+        "Surf & Beach",
+        "Run & Fitness"
+      ],
       "cost": "$60 including board",
       "free": false,
       "url": "https://example.com/surfclinic",
@@ -462,7 +675,9 @@
       "timeStart": "18:30",
       "venue": "Beach 90th Street Boardwalk",
       "address": "Beach 90th St & Shore Front Pkwy, Rockaway Beach, NY 11693",
-      "category": ["Run & Fitness"],
+      "category": [
+        "Run & Fitness"
+      ],
       "cost": "Free",
       "free": true,
       "url": "",
@@ -472,7 +687,9 @@
       "source": "Community",
       "featured": false,
       "recurring": "Weekly",
-      "days": ["Wed"]
+      "days": [
+        "Wed"
+      ]
     },
     {
       "id": "s5_2026-09-24",
@@ -482,9 +699,12 @@
       "dateEnd": null,
       "time": "7:30 PM",
       "timeStart": "19:30",
-      "venue": "Rockaway Brewing Company",
-      "address": "415 Beach 72nd St, Arverne, NY 11692",
-      "category": ["Nightlife", "Community"],
+      "venue": "Tap That",
+      "address": "94-10 Rockaway Beach Blvd, Rockaway Beach, NY 11693",
+      "category": [
+        "Nightlife",
+        "Community"
+      ],
       "cost": "Free to play",
       "free": true,
       "url": "",
@@ -494,7 +714,9 @@
       "source": "Community",
       "featured": false,
       "recurring": "Weekly",
-      "days": ["Thu"]
+      "days": [
+        "Thu"
+      ]
     },
     {
       "id": "o14",
@@ -505,7 +727,11 @@
       "timeStart": "17:00",
       "venue": "Beach 97th Street Plaza",
       "address": "Beach 97th St & Shore Front Pkwy, Rockaway Beach, NY 11693",
-      "category": ["Market", "Food & Drink", "Nightlife"],
+      "category": [
+        "Market",
+        "Food & Drink",
+        "Nightlife"
+      ],
       "cost": "Free entry",
       "free": true,
       "url": "",
@@ -527,7 +753,9 @@
       "timeStart": "06:15",
       "venue": "Beach 67th Street",
       "address": "Beach 67th St & Shore Front Pkwy, Arverne, NY 11692",
-      "category": ["Surf & Beach"],
+      "category": [
+        "Surf & Beach"
+      ],
       "cost": "Free",
       "free": true,
       "url": "",
@@ -537,7 +765,9 @@
       "source": "Community",
       "featured": false,
       "recurring": "Weekly",
-      "days": ["Sat"]
+      "days": [
+        "Sat"
+      ]
     },
     {
       "id": "o15",
@@ -548,7 +778,10 @@
       "timeStart": "12:00",
       "venue": "Beach 106th Street Boardwalk",
       "address": "Beach 106th St & Shore Front Pkwy, Rockaway Park, NY 11694",
-      "category": ["Food & Drink", "Music"],
+      "category": [
+        "Food & Drink",
+        "Music"
+      ],
       "cost": "$10 entry, drinks extra",
       "free": false,
       "url": "https://example.com/oktoberfest",
@@ -570,7 +803,10 @@
       "timeStart": "09:00",
       "venue": "Beach 95th Street Plaza",
       "address": "Beach 95th St & Rockaway Beach Blvd, Rockaway Beach, NY 11693",
-      "category": ["Market", "Food & Drink"],
+      "category": [
+        "Market",
+        "Food & Drink"
+      ],
       "cost": "Free",
       "free": true,
       "url": "https://example.com/market",
@@ -580,7 +816,9 @@
       "source": "Routine",
       "featured": false,
       "recurring": "Weekly",
-      "days": ["Sun"]
+      "days": [
+        "Sun"
+      ]
     },
     {
       "id": "o16",
@@ -591,7 +829,10 @@
       "timeStart": "10:00",
       "venue": "Beach 87th Street",
       "address": "Beach 87th St & Shore Front Pkwy, Rockaway Beach, NY 11693",
-      "category": ["Kids & Family", "Surf & Beach"],
+      "category": [
+        "Kids & Family",
+        "Surf & Beach"
+      ],
       "cost": "Free",
       "free": true,
       "url": "",
@@ -613,7 +854,10 @@
       "timeStart": "07:00",
       "venue": "Beach 86th Street Boardwalk",
       "address": "Beach 86th St & Shore Front Pkwy, Rockaway Beach, NY 11693",
-      "category": ["Run & Fitness", "Surf & Beach"],
+      "category": [
+        "Run & Fitness",
+        "Surf & Beach"
+      ],
       "cost": "Donation",
       "free": false,
       "url": "",
@@ -623,7 +867,9 @@
       "source": "Instagram",
       "featured": false,
       "recurring": "Weekly",
-      "days": ["Mon"]
+      "days": [
+        "Mon"
+      ]
     },
     {
       "id": "s4_2026-09-30",
@@ -635,7 +881,9 @@
       "timeStart": "18:30",
       "venue": "Beach 90th Street Boardwalk",
       "address": "Beach 90th St & Shore Front Pkwy, Rockaway Beach, NY 11693",
-      "category": ["Run & Fitness"],
+      "category": [
+        "Run & Fitness"
+      ],
       "cost": "Free",
       "free": true,
       "url": "",
@@ -645,7 +893,9 @@
       "source": "Community",
       "featured": false,
       "recurring": "Weekly",
-      "days": ["Wed"]
+      "days": [
+        "Wed"
+      ]
     },
     {
       "id": "o17",
@@ -656,7 +906,9 @@
       "timeStart": "20:00",
       "venue": "Fort Tilden Building T4",
       "address": "Building T4, Fort Tilden, Rockaway Point, NY 11697",
-      "category": ["Arts & Culture"],
+      "category": [
+        "Arts & Culture"
+      ],
       "cost": "$25",
       "free": false,
       "url": "https://example.com/rtc",
@@ -678,7 +930,9 @@
       "timeStart": "06:15",
       "venue": "Beach 67th Street",
       "address": "Beach 67th St & Shore Front Pkwy, Arverne, NY 11692",
-      "category": ["Surf & Beach"],
+      "category": [
+        "Surf & Beach"
+      ],
       "cost": "Free",
       "free": true,
       "url": "",
@@ -688,7 +942,9 @@
       "source": "Community",
       "featured": false,
       "recurring": "Weekly",
-      "days": ["Sat"]
+      "days": [
+        "Sat"
+      ]
     },
     {
       "id": "o18",
@@ -699,7 +955,10 @@
       "timeStart": "09:00",
       "venue": "Beach 108th Street Boardwalk",
       "address": "Beach 108th St & Shore Front Pkwy, Rockaway Park, NY 11694",
-      "category": ["Run & Fitness", "Sports"],
+      "category": [
+        "Run & Fitness",
+        "Sports"
+      ],
       "cost": "$30",
       "free": false,
       "url": "https://example.com/5k",

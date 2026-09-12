@@ -17,6 +17,35 @@ const N = require("./notion");
 const WINDOW_DAYS = 60;
 const DEFAULT_DURATION_MIN = 120; // used by the .ics feed for timed events
 
+/* ---- the Image column -------------------------------------------------- */
+
+// Sentinel written by enrich-images.js when a page turned out to have no
+// usable og:image. It exists only so the nightly job stops re-fetching that
+// page; to the public feed it means "no image", same as an empty column.
+const IMAGE_NONE = "https://rockawayevents.org/img/none";
+
+// Instagram and Facebook CDN URLs are signed and expire within days, and both
+// hosts refuse hotlinking. One must never reach the frontend even if something
+// upstream writes it into Notion by hand, so this is a hard reject rather than
+// a lint. Instagram post photos are served from our own /img/ig/ instead.
+const EXPIRING_CDN = /(^|\.)(cdninstagram\.com|fbcdn\.net)$/i;
+
+// Normalize whatever sits in an Image column to a usable public URL or null.
+function cleanImage(raw) {
+  const s = String(raw == null ? "" : raw).trim();
+  if (!s) return null;
+  if (s === IMAGE_NONE) return null;
+  let u;
+  try {
+    u = new URL(s);
+  } catch (e) {
+    return null; // not a URL at all
+  }
+  if (u.protocol !== "http:" && u.protocol !== "https:") return null;
+  if (EXPIRING_CDN.test(u.hostname)) return null;
+  return s;
+}
+
 /* ---- legacy "Type" -> our "Category" ----------------------------------- */
 
 // The legacy DB's Type multi_select is free-form (an LLM routine writes it), so
@@ -338,7 +367,7 @@ function newDbRow(page) {
     free: N.getCheckbox(page, "Free"),
     url: N.getUrl(page, "URL"),
     instagram: N.getUrl(page, "Instagram"),
-    image: N.getUrl(page, "Image"),
+    image: cleanImage(N.getUrl(page, "Image")),
     description: N.getText(page, "Description"),
     source: N.getSelect(page, "Source") || "Jamal",
     featured: N.getCheckbox(page, "Featured"),
@@ -371,7 +400,8 @@ function legacyDbRow(page) {
     free: /\bfree\b/i.test(cost),
     url: N.getUrl(page, "URL"),
     instagram: null,
-    image: null,
+    // The legacy DB grew an Image column so enrich-images can fill it too.
+    image: cleanImage(N.getUrl(page, "Image")),
     description: N.getText(page, "Description"),
     source: "Routine",
     featured: false,
@@ -528,7 +558,7 @@ function publicShape(e) {
     free: !!e.free,
     url: e.url || null,
     instagram: e.instagram || null,
-    image: e.image || null,
+    image: cleanImage(e.image),
     description: e.description || "",
     source: e.source || "Other",
     featured: !!e.featured,
@@ -645,6 +675,9 @@ async function getEvents(opts) {
 module.exports = {
   getEvents,
   // exported for the sibling functions and for tests
+  IMAGE_NONE,
+  EXPIRING_CDN,
+  cleanImage,
   WINDOW_DAYS,
   DEFAULT_DURATION_MIN,
   TYPE_TO_CATEGORY,

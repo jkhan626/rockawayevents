@@ -119,18 +119,21 @@ main{padding:14px 0 40px;min-height:60vh}
 .card{display:flex;flex-direction:column;width:100%;height:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);transition:border-color .15s,transform .15s,box-shadow .15s}
 .card:hover{border-color:var(--sand);transform:translateY(-2px);box-shadow:0 4px 14px rgba(22,36,47,.08)}
 .shot{position:relative;aspect-ratio:4/5;background:var(--elev);overflow:hidden;container-type:inline-size}
-.shot>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--elev)}
+.shot>img,.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--elev)}
 .poster{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:34px 12px 48px;background:linear-gradient(155deg,var(--c1,#DCEBF1),var(--c2,#FBF6EC) 96%)}
 .poster b{font:700 clamp(15px,4.3vw,20px)/1.12 var(--dsp);font-size:clamp(15px,11.5cqw,31px);letter-spacing:-.015em;color:var(--tx);display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
 .poster i{font-style:normal;font-size:clamp(10.5px,4cqw,13px);color:#2C3D49;margin-top:5px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .scrim{position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom,rgba(22,36,47,.16),rgba(22,36,47,0) 30%)}
-.tile{position:absolute;left:8px;bottom:8px;width:38px;background:var(--card);border:1px solid var(--line2);border-radius:8px;overflow:hidden;text-align:center;box-shadow:0 1px 4px rgba(22,36,47,.18)}
+.tile{flex:0 0 auto;width:38px;background:var(--card);border:1px solid var(--line2);border-radius:8px;overflow:hidden;text-align:center;box-shadow:0 1px 4px rgba(22,36,47,.18)}
 .tile u{display:block;text-decoration:none;font-size:9px;letter-spacing:.08em;color:#fff;font-weight:700;background:var(--orange-deep);padding:2px 0 1px}
 .tile s{display:block;text-decoration:none;font:600 16px/1 var(--sans);color:var(--tx);padding:3px 0 4px}
-.badges{position:absolute;top:7px;left:7px;right:7px;display:flex;gap:4px;overflow:hidden;max-height:20px}
+.badges{position:absolute;top:7px;left:7px;right:7px;z-index:1;display:flex;gap:4px;overflow:hidden;max-height:20px}
 .cat{font-size:10px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;padding:3px 7px;border-radius:999px;background:var(--cbg,#fff);border:1px solid var(--cb,var(--line2));color:var(--cc,var(--tx))}
 .freeb{font-size:10px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;padding:3px 7px;border-radius:999px;background:var(--glassbg);border:1px solid var(--glass);color:var(--glass-tx)}
-.wk{position:absolute;right:8px;bottom:8px;font-size:9px;letter-spacing:.07em;text-transform:uppercase;font-weight:600;color:var(--mu);background:var(--card);border:1px solid var(--line2);border-radius:999px;padding:3px 7px;box-shadow:0 1px 4px rgba(22,36,47,.14)}
+.wk{flex:0 0 auto;font-size:9px;letter-spacing:.07em;text-transform:uppercase;font-weight:600;color:var(--mu);background:var(--card);border:1px solid var(--line2);border-radius:999px;padding:3px 7px;box-shadow:0 1px 4px rgba(22,36,47,.14)}
+.foot{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:34px 9px 9px;display:flex;flex-direction:column;gap:8px;background:linear-gradient(to top,rgba(12,22,30,.92) 0%,rgba(12,22,30,.87) 38%,rgba(12,22,30,.64) 62%,rgba(12,22,30,.22) 84%,rgba(12,22,30,0) 100%)}
+.foot h3{font:700 clamp(12.5px,8.2cqw,18px)/1.2 var(--dsp);letter-spacing:-.012em;color:#fff;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+.frow{display:flex;align-items:flex-end;justify-content:space-between;gap:6px}
 .body{padding:9px 10px 11px;display:flex;flex-direction:column;gap:3px}
 .body h3{font:600 13.5px/1.28 var(--sans);letter-spacing:.005em;text-transform:uppercase;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .body p{font-size:12px;color:var(--mu);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -192,6 +195,10 @@ main{padding:14px 0 40px;min-height:60vh}
 .locals::-webkit-scrollbar{display:none}
 .loc{flex:0 0 84%;min-width:0;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--sand);box-shadow:var(--shadow);border-radius:var(--r);padding:12px 14px 13px}
 @media(min-width:640px){.locals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;overflow:visible}.loc{flex:none}}
+.loc.av{display:flex;gap:12px;align-items:flex-start}
+.loc .face{flex:0 0 auto;width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--sand);box-shadow:0 1px 4px rgba(22,36,47,.16);background:var(--elev)}
+@media(min-width:640px){.loc .face{width:60px;height:60px}}
+.loc .lb{flex:1;min-width:0}
 .loc .lab{display:block;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-tx);font-weight:600}
 .loc h3{font:600 17px/1.2 var(--dsp);letter-spacing:-.01em;margin:4px 0 5px}
 .loc p{font-size:13px;line-height:1.5;color:var(--mu)}
@@ -244,8 +251,6 @@ footer .tiny a.adm{color:var(--mu);opacity:.8}
 @media(min-width:700px){.back{align-items:center;padding:24px}.sheet{max-width:620px;border-radius:16px;max-height:88vh}}
 .sheet .x{position:absolute;top:11px;right:11px;z-index:2;width:34px;height:34px;border-radius:50%;background:var(--card);border:1px solid var(--line2);color:var(--tx);font-size:16px;line-height:1;box-shadow:0 1px 6px rgba(22,36,47,.18)}
 .hero{position:relative;aspect-ratio:16/9;background:var(--elev);overflow:hidden}
-.hero>img{width:100%;height:100%;object-fit:cover}
-.hero.gen{aspect-ratio:16/5}
 .hero .poster b,.hero .poster i{display:none}
 .hero .scrim{background:none}
 .sb{padding:16px 18px 26px}
@@ -380,6 +385,61 @@ var DEV=/^(localhost|127\.0\.0\.1|\[::1\]|)$/.test(location.hostname);
 var CATC={"Music":"#B15CD6","Food & Drink":"#E07A3F","Run & Fitness":"#3FA7D6","Surf & Beach":"#2E9AA8",
 "Kids & Family":"#E4B363","Arts & Culture":"#D6538C","Community":"#7FB8A4","Market":"#C9A227",
 "Nightlife":"#7B61FF","Volunteer":"#5FBF8F","Outdoors":"#57A773","Sports":"#4C86E8","Other":"#8B949E"};
+/* ---------- pictures ----------
+   Every card shows a photograph. In order of preference:
+     1. e.image, the event's own picture, filled in nightly by
+        netlify/functions/enrich-images.js from the event page's og:image
+     2. a venue match from VENUE_IMAGES below
+     3. the photo for the event's first category
+     4. rockaway.jpg, the boardwalk
+   None of the fallbacks is a photograph of the real venue, so nothing here is
+   ever captioned as one; they are mood matches that keep the grid readable.
+   Credits and licence: /img/fallback/CREDITS.md                            */
+var IMGBASE="/img/fallback/";
+var IMG_NONE="https://rockawayevents.org/img/none";  // sentinel, see events-core.js
+var DEFAULT_IMG="rockaway";
+var CATIMG={"Music":"music","Food & Drink":"food-drink","Run & Fitness":"run-fitness",
+"Surf & Beach":"surf-beach","Kids & Family":"kids-family","Arts & Culture":"arts-culture",
+"Community":"community","Market":"market","Nightlife":"nightlife","Volunteer":"volunteer",
+"Outdoors":"outdoors","Sports":"sports","Other":"other"};
+
+// Matched in order against "<venue> <address>" lowercased; first hit wins.
+// Only named places are listed. A plain beach or boardwalk address is left to
+// its category, which is more informative: a run club on the boardwalk gets the
+// runner, a cleanup gets the cleanup, a market gets the market.
+var VENUE_IMAGES=[
+  {re:/\brippers\b/,                        img:"beach-bar"},
+  {re:/\bbungalow bar\b/,                    img:"bar-patio"},
+  {re:/\btap that\b/,                        img:"nightlife"},
+  {re:/\bconnolly/,                          img:"nightlife"},
+  {re:/\bcaracas\b/,                         img:"food-drink"},
+  {re:/rockaway hotel/,                      img:"boardwalk-sunset"},
+  {re:/beach 97th street boardwalk|beach 97th concession/, img:"beach-bar"},
+  {re:/\brise\b/,                            img:"community-center"},
+  {re:/knights of columbus/,                 img:"community-center"},
+  {re:/\blibrar/,                            img:"library"},
+  {re:/jamaica bay|wildlife refuge/,         img:"park-nature"},
+  {re:/amphitheat/,                          img:"music"}
+  // Jacob Riis Park is deliberately absent. It hosts yoga, reggae, markets and
+  // surf alike, so its category says more about a given event than its address,
+  // and pinning the whole park to one photo put two identical cards side by side.
+];
+
+// Instagram and Facebook CDN URLs are signed and expire within days; the
+// backend already refuses them, and this is the belt to that pair of braces.
+var EXPIRING=/^https?:\/\/[^\/]*(cdninstagram\.com|fbcdn\.net)(\/|$|:)/i;
+
+function imageFor(e){
+  var own=String((e&&e.image)||"").trim();
+  if(own&&own!==IMG_NONE&&/^https?:\/\//i.test(own)&&!EXPIRING.test(own))return own;
+  var hay=(((e&&e.venue)||"")+" "+((e&&e.address)||"")).toLowerCase();
+  for(var i=0;i<VENUE_IMAGES.length;i++){
+    if(VENUE_IMAGES[i].re.test(hay))return IMGBASE+VENUE_IMAGES[i].img+".jpg";
+  }
+  var c=((e&&e.category)||[])[0];
+  return IMGBASE+(CATIMG[c]||DEFAULT_IMG)+".jpg";
+}
+
 var DOW=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
 var MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 var MONF=["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -394,7 +454,9 @@ var FEATURED_LOCALS=[
     cta:"Order rolls",
     instagram:"",
     blurb:"Cinnamon rolls baked to order in Rockaway Park. Order online, pick up Saturdays 9 AM to 1 PM on Beach 98th.",
-    short:"Cinnamon rolls, Saturday pickup"
+    short:"Cinnamon rolls, Saturday pickup",
+    avatar:"/img/people/sasha.jpg",
+    avatarAlt:"Sasha Khan"
   },
   {
     name:"Rockaway Trainer",
@@ -402,7 +464,9 @@ var FEATURED_LOCALS=[
     cta:"Book a session",
     instagram:"https://instagram.com/rockawaytrainer",
     blurb:"In-home personal training on the peninsula. CSCS certified. 45-minute sessions, you supply the dumbbells.",
-    short:"In-home personal training"
+    short:"In-home personal training",
+    avatar:"/img/people/jamal.jpg",
+    avatarAlt:"Jamal Khan"
   }
 ];
 
@@ -646,22 +710,30 @@ function skeleton(){
 }
 function shotHTML(e,hero){
   var c1=(e.category||[])[0]||"Other";
-  // the generated poster always sits underneath, so a missing or broken image still reads as a card
+  // The generated poster stays underneath as the onerror net: if the photo
+  // 404s the img removes itself and the category gradient shows through, so a
+  // card is never empty. The image is absolutely positioned inside a fixed
+  // aspect-ratio box, so nothing reflows while it loads.
   var inner='<div class="poster" style="'+posterVars(c1)+'"><b>'+esc(e.event||"Event")+"</b>"+
-    (e.venue?"<i>"+esc(e.venue)+"</i>":"")+"</div>";
-  if(e.image)inner+='<img src="'+esc(e.image)+'" alt="" loading="lazy" decoding="async" onerror="this.remove()"><div class="scrim"></div>';
+    (e.venue?"<i>"+esc(e.venue)+"</i>":"")+"</div>"+
+    '<img src="'+esc(imageFor(e))+'" alt="" width="900" height="640" loading="lazy" decoding="async" onerror="this.remove()">'+
+    '<div class="scrim"></div>';
   if(hero)return inner;
   var bad=[];
   (e.category||[]).slice(0,1).forEach(function(c){bad.push(catChip(c))});
   if(e.free||/^free/i.test(e.cost||""))bad.push('<span class="freeb">Free</span>');
   var d=pd(e.date),tile=d?'<div class="tile" aria-hidden="true"><u>'+MON[d.getMonth()]+"</u><s>"+d.getDate()+"</s></div>":"";
   var wk=e.recurring&&e.recurring!=="None"?'<span class="wk">'+(e.recurring==="Monthly"?"Monthly":"Weekly")+"</span>":"";
-  return inner+'<div class="badges">'+bad.join("")+"</div>"+tile+wk;
+  // Title over the scrim, then the date tile and the Weekly tag beneath it, so
+  // an og:image card and a fallback-photo card read exactly the same.
+  return inner+'<div class="badges">'+bad.join("")+"</div>"+
+    '<div class="foot"><h3>'+esc(e.event||"Event")+"</h3>"+
+    (tile||wk?'<div class="frow">'+tile+(wk||"<span></span>")+"</div>":"")+"</div>";
 }
 function cardHTML(e){
   return '<button class="card" data-id="'+esc(e.id)+'">'+
     '<div class="shot">'+shotHTML(e)+"</div>"+
-    '<div class="body">'+(e.image?"<h3>"+esc(e.event||"Event")+"</h3>":"")+
+    '<div class="body">'+
     (e.time?'<p class="t">'+esc(e.time)+"</p>":"")+
     (e.venue?"<p>"+esc(e.venue)+"</p>":"")+
     "</div></button>";
@@ -871,7 +943,7 @@ function sheetHTML(e){
   a.push('<button id="icsBtn">Download .ics</button>');
   if(e.instagram)a.push('<a href="'+esc(e.instagram)+'" target="_blank" rel="noopener">Instagram</a>');
   a.push('<button id="shareBtn">Share</button>');
-  return '<div class="hero'+(e.image?"":" gen")+'">'+shotHTML(e,true)+"</div><div class=\"sb\">"+
+  return '<div class="hero">'+shotHTML(e,true)+"</div><div class=\"sb\">"+
     '<h2 id="shtitle">'+esc(e.event||"Event")+"</h2>"+
     (cats?'<div class="pills">'+cats+"</div>":"")+
     '<div class="kv"><span class="k">When</span><span class="v">'+esc(dl)+(e.time?"<br>"+esc(e.time):"")+
@@ -973,11 +1045,17 @@ function injectLD(){
 function renderLocals(){
   if(!FEATURED_LOCALS.length){$("locals").hidden=true;return}
   $("locals").innerHTML=FEATURED_LOCALS.map(function(l){
-    return '<article class="loc"><span class="lab">Featured local</span>'+
+    var body='<span class="lab">Featured local</span>'+
       "<h3>"+esc(l.name)+"</h3><p>"+esc(l.blurb)+"</p>"+
       '<div class="lnk"><a href="'+esc(l.url)+'" target="_blank" rel="noopener">'+esc(l.cta)+"</a>"+
       (l.instagram?'<a class="ig" href="'+esc(l.instagram)+'" target="_blank" rel="noopener">Instagram</a>':"")+
-      "</div></article>";
+      "</div>";
+    if(!l.avatar)return '<article class="loc">'+body+"</article>";
+    // The file is a 320x320 square crop, so width and height are declared and
+    // the ring is drawn in CSS rather than baked into the picture.
+    return '<article class="loc av"><img class="face" src="'+esc(l.avatar)+
+      '" alt="'+esc(l.avatarAlt||l.name)+'" width="320" height="320" loading="lazy" decoding="async" onerror="this.remove()">'+
+      '<div class="lb">'+body+"</div></article>";
   }).join("");
   $("locfoot").innerHTML=FEATURED_LOCALS.map(function(l){
     return '<li><a href="'+esc(l.url)+'" target="_blank" rel="noopener">'+esc(l.name)+"</a>"+
