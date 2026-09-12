@@ -59,7 +59,7 @@
 #   /api/enrich-images?key=<MODERATE_KEY>[&limit=N][&dry=1]
 [[redirects]]
   from = "/api/enrich-images"
-  to = "/.netlify/functions/enrich-images"
+  to = "/.netlify/functions/enrich-images-run"
   status = 200
 
 # Nicer public URLs for the two subscribe feeds. These are what the footer
