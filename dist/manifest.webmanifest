@@ -1,7 +1,7 @@
 {
   "name": "Rockaway Events",
   "short_name": "Rockaway",
-  "description": "What's happening in the Rockaways. Events, weekly run clubs and markets, and beach conditions.",
+  "description": "What's happening in Rockaway. Events, weekly run clubs and markets, and beach conditions.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

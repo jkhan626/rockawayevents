@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Rockaway Events | What's happening in the Rockaways</title>
+<title>Rockaway Events | What's happening in Rockaway</title>
 <meta name="description" content="Every event on the Rockaway peninsula in one place. Concerts, markets, surf, run clubs, kids stuff, and beach conditions. Free, no sign-up, updated daily.">
 <link rel="canonical" href="https://rockawayevents.org/">
 <meta name="theme-color" content="#FBF6EC">
@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Rockaway Events">
 <meta property="og:title" content="Rockaway Events">
-<meta property="og:description" content="What's happening in the Rockaways. Events, weekly run clubs and markets, and today's beach conditions.">
+<meta property="og:description" content="What's happening in Rockaway. Events, weekly run clubs and markets, and today's beach conditions.">
 <meta property="og:url" content="https://rockawayevents.org/">
 <meta property="og:image" content="https://rockawayevents.org/og.png">
 <meta property="og:image:alt" content="Rockaway Events">
@@ -19,7 +19,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Rockaway Events">
-<meta name="twitter:description" content="What's happening in the Rockaways.">
+<meta name="twitter:description" content="What's happening in Rockaway.">
 <meta name="twitter:image" content="https://rockawayevents.org/og.png">
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
@@ -386,16 +386,30 @@ var CATC={"Music":"#B15CD6","Food & Drink":"#E07A3F","Run & Fitness":"#3FA7D6","
 "Kids & Family":"#E4B363","Arts & Culture":"#D6538C","Community":"#7FB8A4","Market":"#C9A227",
 "Nightlife":"#7B61FF","Volunteer":"#5FBF8F","Outdoors":"#57A773","Sports":"#4C86E8","Other":"#8B949E"};
 /* ---------- pictures ----------
-   Every card shows a photograph. In order of preference:
-     1. e.image, the event's own picture, filled in nightly by
+   Every card shows a photograph, and a recurring venue shows a photograph of
+   THAT venue. Two folders feed this:
+
+     /img/venues/   real photographs of real Rockaway places, taken from the
+                    venue's own Instagram post or its own website, one file per
+                    place, never reused across places. Provenance for every one
+                    of them is in /img/venues/CREDITS.md.
+     /img/fallback/ 20 stock photos. None of these is a photograph of anywhere
+                    in Rockaway, so none is ever captioned as one. They are the
+                    last resort, for an event with no venue photo of its own.
+
+   Order of preference inside imageFor():
+     1. a TITLE_IMAGES rule marked force, for the handful of cases where one
+        venue hosts very different scenes and its site serves one generic
+        picture for all of them (the hotel does exactly that for the pool and
+        the rooftop, so both rows arrive here carrying the same og:image)
+     2. e.image, the event's own picture, filled in nightly by
         netlify/functions/enrich-images.js from the event page's og:image
-     2. a venue match from VENUE_IMAGES below
-     3. the photo for the event's first category
-     4. rockaway.jpg, the boardwalk
-   None of the fallbacks is a photograph of the real venue, so nothing here is
-   ever captioned as one; they are mood matches that keep the grid readable.
-   Credits and licence: /img/fallback/CREDITS.md                            */
+     3. the rest of TITLE_IMAGES, title-specific scenes
+     4. a venue match from VENUE_IMAGES, on "<venue> <address>"
+     5. the stock photo for the event's first category
+     6. rockaway.jpg, the stock boardwalk                                    */
 var IMGBASE="/img/fallback/";
+var VENBASE="/img/venues/";
 var IMG_NONE="https://rockawayevents.org/img/none";  // sentinel, see events-core.js
 var DEFAULT_IMG="rockaway";
 var CATIMG={"Music":"music","Food & Drink":"food-drink","Run & Fitness":"run-fitness",
@@ -403,38 +417,81 @@ var CATIMG={"Music":"music","Food & Drink":"food-drink","Run & Fitness":"run-fit
 "Community":"community","Market":"market","Nightlife":"nightlife","Volunteer":"volunteer",
 "Outdoors":"outdoors","Sports":"sports","Other":"other"};
 
+// Matched in order against the event title, lowercased; first hit wins. An
+// optional `at` narrows the rule to one venue, matched on "<venue> <address>",
+// so a pool party somewhere else never inherits the hotel's pool.
+// A rule with force:true also beats the event's own og:image. Use it only where
+// the venue publishes one picture for everything it hosts, which is why the two
+// Rockaway Hotel rows would otherwise be identical cards side by side.
+var TITLE_IMAGES=[
+  {re:/\bpool\b/,    at:/rockaway hotel/, img:"rockaway-hotel-pool",    force:true},
+  {re:/\brooftop\b/, at:/rockaway hotel/, img:"rockaway-hotel-rooftop", force:true},
+  {re:/running club/,                     img:"rockaway-running-club"},
+  {re:/cardio punch/,                     img:"rockaway-boardwalk"},
+  {re:/boardwalk bootcamp/,               img:"rockaway-boardwalk"},
+  {re:/\bcanela\b/,                    img:"/img/canela-rolls.jpg"}
+];
+
 // Matched in order against "<venue> <address>" lowercased; first hit wins.
-// Only named places are listed. A plain beach or boardwalk address is left to
-// its category, which is more informative: a run club on the boardwalk gets the
-// runner, a cleanup gets the cleanup, a market gets the market.
+// Every img here is a photograph of that exact place, so the rules have to stay
+// tight: a loose one would put the wrong building on a card.
 var VENUE_IMAGES=[
-  {re:/\brippers\b/,                        img:"beach-bar"},
-  {re:/\bbungalow bar\b/,                    img:"bar-patio"},
-  {re:/\btap that\b/,                        img:"nightlife"},
-  {re:/\bconnolly/,                          img:"nightlife"},
-  {re:/\bcaracas\b/,                         img:"food-drink"},
-  {re:/rockaway hotel/,                      img:"boardwalk-sunset"},
-  {re:/beach 97th street boardwalk|beach 97th concession/, img:"beach-bar"},
-  {re:/\brise\b/,                            img:"community-center"},
-  {re:/knights of columbus/,                 img:"community-center"},
-  {re:/\blibrar/,                            img:"library"},
-  {re:/jamaica bay|wildlife refuge/,         img:"park-nature"},
-  {re:/amphitheat/,                          img:"music"}
-  // Jacob Riis Park is deliberately absent. It hosts yoga, reggae, markets and
-  // surf alike, so its category says more about a given event than its address,
-  // and pinning the whole park to one photo put two identical cards side by side.
+  {re:/\brippers\b/,                        img:"rippers"},
+  {re:/\btap that\b/,                        img:"tap-that"},
+  {re:/\bbungalow bar\b/,                    img:"bungalow-bar"},
+  {re:/\bconnolly/,                          img:"connollys"},
+  {re:/\bcaracas\b/,                         img:"caracas"},
+  {re:/rockaway hotel/,                      img:"rockaway-hotel-rooftop"},
+  {re:/jacob riis|riis park|riis beach/,     img:"riis-beach"},
+  {re:/\brise\b|rise center/,                img:"rise-center"},
+  {re:/seaside library/,                     img:"seaside-library"},
+  {re:/far rockaway library/,                img:"far-rockaway-library"},
+  {re:/broad channel library/,               img:"broad-channel-library"},
+  {re:/jamaica bay|wildlife refuge/,         img:"jamaica-bay-refuge"},
+  {re:/straiton|under the a train/,          img:"rockaway-market-street"}
+  // There is deliberately no catch-all /boardwalk/ rule. It would be true, in
+  // that all of these do happen on the boards, but it put the same photograph
+  // on six unrelated cards, which is the thing this whole folder exists to stop.
+  // Events out on the sand or the boardwalk with no venue of their own keep
+  // their category photo, which at least says something different per event.
+  //
+  // Also deliberately absent, because no photograph of the place could be
+  // sourced and a lookalike is worse than a stock photo that claims nothing:
+  // Beach 97th concessions, the Rockaway Beach Youthmarket, the Knights of
+  // Columbus hall, the Beach 95th amphitheater. See /img/venues/CREDITS.md.
 ];
 
 // Instagram and Facebook CDN URLs are signed and expire within days; the
 // backend already refuses them, and this is the belt to that pair of braces.
 var EXPIRING=/^https?:\/\/[^\/]*(cdninstagram\.com|fbcdn\.net)(\/|$|:)/i;
 
+// A rule's img is a slug in /img/venues/, or a path if the picture already
+// lives somewhere else on the site (Canela's rolls do).
+function venImg(img){return img.charAt(0)==="/"?img:VENBASE+img+".jpg";}
+
+function titleImage(e,forcedOnly){
+  var t=String((e&&e.event)||"").toLowerCase();
+  var where=(((e&&e.venue)||"")+" "+((e&&e.address)||"")).toLowerCase();
+  for(var i=0;i<TITLE_IMAGES.length;i++){
+    var r=TITLE_IMAGES[i];
+    if(forcedOnly&&!r.force)continue;
+    if(!r.re.test(t))continue;
+    if(r.at&&!r.at.test(where))continue;
+    return venImg(r.img);
+  }
+  return null;
+}
+
 function imageFor(e){
+  var forced=titleImage(e,true);
+  if(forced)return forced;
   var own=String((e&&e.image)||"").trim();
   if(own&&own!==IMG_NONE&&/^https?:\/\//i.test(own)&&!EXPIRING.test(own))return own;
+  var titled=titleImage(e,false);
+  if(titled)return titled;
   var hay=(((e&&e.venue)||"")+" "+((e&&e.address)||"")).toLowerCase();
   for(var i=0;i<VENUE_IMAGES.length;i++){
-    if(VENUE_IMAGES[i].re.test(hay))return IMGBASE+VENUE_IMAGES[i].img+".jpg";
+    if(VENUE_IMAGES[i].re.test(hay))return venImg(VENUE_IMAGES[i].img);
   }
   var c=((e&&e.category)||[])[0];
   return IMGBASE+(CATIMG[c]||DEFAULT_IMG)+".jpg";
@@ -1038,7 +1095,7 @@ function injectLD(){
   });
   var s=document.createElement("script");
   s.type="application/ld+json";
-  s.textContent=JSON.stringify({"@context":"https://schema.org","@type":"ItemList","name":"Upcoming events in the Rockaways","itemListElement":items});
+  s.textContent=JSON.stringify({"@context":"https://schema.org","@type":"ItemList","name":"Upcoming events in Rockaway","itemListElement":items});
   document.head.appendChild(s);
 }
 
@@ -1121,5 +1178,6 @@ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(syncTop);
 
 boot();
 </script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "03fa211dea804884a2459056af1cf81b"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
