@@ -189,7 +189,7 @@ function parserTests() {
   eq("and a path folder named logos does not condemn the file", first('<meta property="og:image" content="https://x.example/logos/beach-party-flyer.jpg">'), "https://x.example/logos/beach-party-flyer.jpg");
   eq("the next candidate is used when the first is a logo", first('<meta property="og:image" content="https://x.example/logo.png"><meta name="twitter:image" content="https://x.example/crowd.jpg">'), "https://x.example/crowd.jpg");
   eq("looksLikeLogo direct", [E.looksLikeLogo("https://a.b/logo.png"), E.looksLikeLogo("https://a.b/seals-at-riis.jpg")], [true, false]);
-  eq("site-wide-logo hosts are recognised", [E.SITE_LOGO_HOSTS.test("www.eatrippers.com"), E.SITE_LOGO_HOSTS.test("jbrpc.org"), E.SITE_LOGO_HOSTS.test("rockawaytimes.com")], [true, true, false]);
+  eq("site-wide-logo hosts are recognised", [E.SITE_LOGO_HOSTS.test("www.eatrippers.com"), E.SITE_LOGO_HOSTS.test("jbrpc.org"), E.SITE_LOGO_HOSTS.test("rockawaytimes.com"), E.SITE_LOGO_HOSTS.test("therockawayhotel.com")], [true, true, true, false]);
 
   console.log("\n[1b] instagram link detection");
   for (const u of [

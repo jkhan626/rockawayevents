@@ -70,7 +70,7 @@ const SKIP_HOSTS = /(^|\.)(instagram\.com|instagr\.am|cdninstagram\.com|fbcdn\.n
 //   tapthatrbny.com      -> Home-Page-Logo.png
 //   connollysrbny.com    -> Felix_the_Cat_Color.png
 //   jbrpc.org            -> JBRPC_SEAL+copy+birds.png
-const SITE_LOGO_HOSTS = /(^|\.)(eatrippers\.com|tapthatrbny\.com|connollysrbny\.com|jbrpc\.org)$/i;
+const SITE_LOGO_HOSTS = /(^|\.)(eatrippers\.com|tapthatrbny\.com|connollysrbny\.com|jbrpc\.org|rockawaytimes\.com)$/i; // rockawaytimes.com: every post shares one generic THINGS-TO-DO banner
 
 // A filename that announces itself as branding. Deliberately narrow: whole
 // words only, so "iconic-sunset.jpg" and "sealife.jpg" are left alone.
