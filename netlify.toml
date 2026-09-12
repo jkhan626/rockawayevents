@@ -1,0 +1,86 @@
+[build]
+  publish = "dist"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# ── API routes ───────────────────────────────────────────────────────────────
+# All of /api/* is a 200 rewrite (not a redirect) so the browser keeps the
+# pretty URL and same-origin fetches never see a cross-origin hop.
+
+[[redirects]]
+  from = "/api/events"
+  to = "/.netlify/functions/events"
+  status = 200
+
+[[redirects]]
+  from = "/api/conditions"
+  to = "/.netlify/functions/conditions"
+  status = 200
+
+[[redirects]]
+  from = "/api/calendar.ics"
+  to = "/.netlify/functions/calendar-ics"
+  status = 200
+
+[[redirects]]
+  from = "/api/feed.xml"
+  to = "/.netlify/functions/rss"
+  status = 200
+
+[[redirects]]
+  from = "/api/ferry"
+  to = "/.netlify/functions/ferry"
+  status = 200
+
+[[redirects]]
+  from = "/api/pending"
+  to = "/.netlify/functions/pending"
+  status = 200
+
+[[redirects]]
+  from = "/api/moderate"
+  to = "/.netlify/functions/moderate"
+  status = 200
+
+# Nicer public URLs for the two subscribe feeds. These are what the footer
+# links to (webcal://rockawayevents.org/calendar.ics and /feed.xml).
+[[redirects]]
+  from = "/calendar.ics"
+  to = "/api/calendar.ics"
+  status = 200
+
+[[redirects]]
+  from = "/feed.xml"
+  to = "/api/feed.xml"
+  status = 200
+
+# ── Headers ──────────────────────────────────────────────────────────────────
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# The moderation page is private. Keep it out of search results; the API it
+# calls sets no-store on its own responses.
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+    Cache-Control = "no-store"
+
+[[headers]]
+  for = "/admin"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+    Cache-Control = "no-store"
+
+# App icons are content-addressed by name and never change in place.
+[[headers]]
+  for = "/icons/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
