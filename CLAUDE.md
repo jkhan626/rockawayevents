@@ -51,3 +51,13 @@ Light "sand and ocean" palette, readable in sunlight on a phone: page background
 1. **Rockaway con Canela** (https://rockawaycanela.nyc): Sasha's home bakery in Rockaway Park. Cinnamon rolls baked to order, Saturday pickup 9 AM to 1 PM on Beach 98th. Never publish the house number. Insured through the Food Liability Insurance Program (say it plainly if mentioned at all).
 2. **Rockaway Trainer** (https://rockawaytrainer.com, IG @rockawaytrainer): Jamal's in-home personal training on the peninsula, CSCS certified, 45-minute sessions, text (347) 313-8748. No steroid/PED mentions ever, no fake testimonials.
 Also keep a `Featured = true` recurring Notion row "Rockaway con Canela Saturday pickup" (Sat, 9 AM to 1 PM) so it shows in the feed and the Every week section.
+
+## Email (Resend) and newsletter
+- Transactional email goes through **Resend** (REST, no SDK) via `netlify/functions/lib/email.js`: Jamal gets a "New event submitted" email (with admin + Notion links), submitters get a confirmation, and an "Your event is live" email on approve. `POST /api/subscribe` adds a contact to a Resend Audience (footer "weekly Rockaway rundown" box). All of it no-ops cleanly until the env vars exist.
+- **Env vars:** `RESEND_API_KEY` and `RESEND_AUDIENCE_ID` (NOT yet set as of 2026-09-12: Jamal must log in to resend.com in Chrome so Claude can add the domain + create the key, or paste the values into Netlify himself), `NOTIFY_EMAIL` (set: jamalknyc@gmail.com), `EMAIL_FROM` (set: `Rockaway Events <hello@rockawayevents.org>`).
+- Sending from hello@rockawayevents.org via Resend needs the domain verified in Resend: DKIM TXT `resend._domainkey`, plus MX + SPF TXT on the `send` subdomain (values come from the Resend dashboard). These do not conflict with Namecheap's inbound forwarding MX on the apex.
+- Netlify Forms also emails jamalknyc@gmail.com on every submission (site hook `submission_created`), so submissions are never missed even without Resend.
+- Weekly newsletter plan: Resend Broadcasts to the audience (free tier: 3,000 emails/mo, 1,000 contacts). A Claude routine can draft "This week in Rockaway" from `/api/events`.
+
+## Status 2026-09-12 (launch day)
+Live at https://rockawayevents.org (HTTPS provisioned ~40 min after DNS). 170 events on day one (21 seeded recurring series + the Rockaway rows from the legacy NYC-wide routine DB). Netlify form detection enabled; `event-submit` form registered. Follow-ups: Resend keys; a real-phone pass on the bottom sheet (iOS Safari); consider a "hide weekly" toggle since recurring occurrences dominate the feed; PNG icons are rasterized by `scripts/rasterize.js` (uses sharp from `../Wedding/node_modules`, re-run after editing the SVGs).
