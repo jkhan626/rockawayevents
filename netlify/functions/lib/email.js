@@ -60,13 +60,15 @@ async function sendEmail({ to, subject, html, text, replyTo }) {
   }
 }
 
-// POST /audiences/{id}/contacts. No-op (not a failure) when Resend isn't
-// configured for contacts yet, so the weekly-list signup never 500s.
+// Adds a contact to the Resend audience. Resend's newer accounts have one
+// account-wide audience and take POST /contacts; older ones need
+// POST /audiences/{id}/contacts, so RESEND_AUDIENCE_ID is optional. No-op
+// (not a failure) when RESEND_API_KEY is unset, so the signup never 500s.
 async function addContact({ email, firstName }) {
   const apiKey = process.env.RESEND_API_KEY;
   const audienceId = process.env.RESEND_AUDIENCE_ID;
-  if (!apiKey || !audienceId) {
-    console.log("email: RESEND_API_KEY or RESEND_AUDIENCE_ID missing, skipping addContact");
+  if (!apiKey) {
+    console.log("email: RESEND_API_KEY missing, skipping addContact");
     return { ok: false, skipped: true };
   }
 
@@ -76,7 +78,7 @@ async function addContact({ email, firstName }) {
   const ac = new AbortController();
   const timer = setTimeout(() => ac.abort(), 8000);
   try {
-    const res = await fetch(RESEND_API + "/audiences/" + audienceId + "/contacts", {
+    const res = await fetch(RESEND_API + (audienceId ? "/audiences/" + audienceId + "/contacts" : "/contacts"), {
       method: "POST",
       headers: {
         Authorization: "Bearer " + apiKey,
