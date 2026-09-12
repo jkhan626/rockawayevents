@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rockaway Events | What's happening in the Rockaways</title>
+<meta name="description" content="Every event on the Rockaway peninsula in one place. Concerts, markets, surf, run clubs, kids stuff, and beach conditions. Free, no sign-up, updated daily.">
+<link rel="canonical" href="https://rockawayevents.org/">
+<meta name="theme-color" content="#FBF6EC">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Rockaway Events">
+<meta property="og:title" content="Rockaway Events">
+<meta property="og:description" content="What's happening in the Rockaways. Events, weekly run clubs and markets, and today's beach conditions.">
+<meta property="og:url" content="https://rockawayevents.org/">
+<meta property="og:image" content="https://rockawayevents.org/og.png">
+<meta property="og:image:alt" content="Rockaway Events">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rockaway Events">
+<meta name="twitter:description" content="What's happening in the Rockaways.">
+<meta name="twitter:image" content="https://rockawayevents.org/og.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="Rockaway Events" href="/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+/* Light "sand and ocean" palette. Fills and small-text colours are separate
+   tokens: the brand hue is often too light to read at 10px on white. */
+--bg:#FBF6EC;--elev:#F3EAD8;--card:#FFFFFF;--line:#E6DCC8;--line2:#D8CBB0;
+--tx:#16242F;--mu:#5C6670;--ocean:#1F6F8B;
+--orange:#E2572B;--orange-deep:#C7481E;--orange-tx:#BF4318;
+--glass:#2E8B6E;--glassbg:#DDF1E8;--glass-tx:#1F6B53;--glassdark:#25725A;
+--sand:#C9A96E;--gold-tx:#8A6D3B;
+--shadow:0 1px 2px rgba(22,36,47,.05);
+--dsp:'Fraunces',Georgia,serif;--sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+--r:12px;
+}
+html{color-scheme:light}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font:400 15px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-wrap:break-word}
+img{display:block;max-width:100%}
+a{color:var(--ocean);text-decoration:none}
+a:hover{text-decoration:underline}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--ocean);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 14px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:40;background:rgba(251,246,236,.93);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topin{display:flex;align-items:center;gap:10px;padding:10px 0}
+.mark{font:700 18px/1 var(--dsp);color:var(--tx);letter-spacing:-.015em;white-space:nowrap}
+.search{flex:1;min-width:0;position:relative}
+.search input{width:100%;background:var(--card);box-shadow:var(--shadow);border:1px solid var(--line2);border-radius:999px;color:var(--tx);font:400 14px var(--sans);padding:9px 14px 9px 34px}
+.search input::placeholder{color:var(--mu)}
+.search svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:15px;height:15px;stroke:var(--mu);fill:none;stroke-width:2}
+.toplinks{display:flex;gap:4px;flex-shrink:0}
+.toplinks a{font-size:13px;color:var(--mu);padding:7px 9px;border-radius:8px;white-space:nowrap}
+.toplinks a:hover{color:var(--tx);background:var(--card);text-decoration:none}
+@media(max-width:519px){
+.topin{flex-wrap:wrap;row-gap:8px;padding:9px 0 9px}
+.mark{order:1;flex:1;min-width:0}
+.toplinks{order:2}
+.search{order:3;flex-basis:100%}
+}
+@media(min-width:560px){.mark{font-size:22px}}
+
+/* conditions */
+.cond{border-bottom:1px solid var(--line);background:var(--elev)}
+.condrow{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:9px 0}
+.condrow::-webkit-scrollbar{display:none}
+.ci{flex:0 0 auto;padding:0 13px;border-right:1px solid var(--line);line-height:1.3}
+.ci:last-child{border-right:0}
+.ci b{display:block;font-size:14px;font-weight:600;white-space:nowrap}
+.ci i{display:block;font-style:normal;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--mu)}
+.score{align-self:center;display:inline-flex;align-items:center;gap:6px;background:rgba(31,111,139,.09);border:1px solid rgba(31,111,139,.34);color:var(--ocean);border-radius:999px;padding:5px 11px;font-size:13px;font-weight:600;white-space:nowrap}
+.score .q{opacity:.7;font-weight:400}
+.reasons{padding:0 14px 11px;font-size:13px;color:var(--mu)}
+.reasons ul{list-style:none;display:flex;flex-wrap:wrap;gap:4px 16px}
+.reasons li::before{content:"·";margin-right:6px;color:var(--ocean)}
+
+/* filters */
+.filters{position:sticky;top:var(--toph,53px);z-index:30;background:rgba(251,246,236,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:8px 0 7px}
+.strip{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.strip::-webkit-scrollbar{display:none}
+.strip,.condrow{-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 20px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 20px),transparent)}
+.pill{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--mu);border-radius:999px;padding:6px 12px;font-size:13px;white-space:nowrap;transition:background .15s,color .15s,border-color .15s}
+.pill:hover{color:var(--tx);border-color:var(--ocean)}
+.pill.on{background:var(--ocean);border-color:var(--ocean);color:#fff;font-weight:600}
+.pill.date{display:flex;flex-direction:column;align-items:center;line-height:1.15;padding:4px 11px}
+.pill.date u{text-decoration:none;font-size:10px;letter-spacing:.06em;text-transform:uppercase;opacity:.75}
+.pill.date s{text-decoration:none;font-size:14px;font-weight:600}
+.pill .n{display:inline-block;margin-left:5px;font-size:11px;opacity:.6}
+.row2{display:flex;align-items:center;gap:5px;margin-top:7px}
+.row2 .strip{flex:1;min-width:0}
+.pill.free.on{background:var(--glassdark);border-color:var(--glassdark);color:#fff}
+.seg{flex:0 0 auto;display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--card)}
+.seg button{padding:6px 11px;font-size:12.5px;color:var(--mu)}
+@media(min-width:520px){.seg button{padding:6px 13px;font-size:13px}}
+.seg button.on{background:var(--elev);color:var(--tx);font-weight:600}
+
+/* grid */
+main{padding:14px 0 40px;min-height:60vh}
+.dayhead{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin:22px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--line)}
+.dayhead:first-child{margin-top:4px}
+.dayhead h2{font:500 20px/1.2 var(--dsp);letter-spacing:-.01em}
+.dayhead em{font-style:normal;font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--orange-tx);font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media(min-width:720px){.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}}
+@media(min-width:1100px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+.card{display:flex;flex-direction:column;width:100%;height:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);transition:border-color .15s,transform .15s,box-shadow .15s}
+.card:hover{border-color:var(--sand);transform:translateY(-2px);box-shadow:0 4px 14px rgba(22,36,47,.08)}
+.shot{position:relative;aspect-ratio:4/5;background:var(--elev);overflow:hidden;container-type:inline-size}
+.shot>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--elev)}
+.poster{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:34px 12px 48px;background:linear-gradient(155deg,var(--c1,#DCEBF1),var(--c2,#FBF6EC) 96%)}
+.poster b{font:700 clamp(15px,4.3vw,20px)/1.12 var(--dsp);font-size:clamp(15px,11.5cqw,31px);letter-spacing:-.015em;color:var(--tx);display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.poster i{font-style:normal;font-size:clamp(10.5px,4cqw,13px);color:#2C3D49;margin-top:5px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.scrim{position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom,rgba(22,36,47,.16),rgba(22,36,47,0) 30%)}
+.tile{position:absolute;left:8px;bottom:8px;width:38px;background:var(--card);border:1px solid var(--line2);border-radius:8px;overflow:hidden;text-align:center;box-shadow:0 1px 4px rgba(22,36,47,.18)}
+.tile u{display:block;text-decoration:none;font-size:9px;letter-spacing:.08em;color:#fff;font-weight:700;background:var(--orange-deep);padding:2px 0 1px}
+.tile s{display:block;text-decoration:none;font:600 16px/1 var(--sans);color:var(--tx);padding:3px 0 4px}
+.badges{position:absolute;top:7px;left:7px;right:7px;display:flex;gap:4px;overflow:hidden;max-height:20px}
+.cat{font-size:10px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;padding:3px 7px;border-radius:999px;background:var(--cbg,#fff);border:1px solid var(--cb,var(--line2));color:var(--cc,var(--tx))}
+.freeb{font-size:10px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;padding:3px 7px;border-radius:999px;background:var(--glassbg);border:1px solid var(--glass);color:var(--glass-tx)}
+.wk{position:absolute;right:8px;bottom:8px;font-size:9px;letter-spacing:.07em;text-transform:uppercase;font-weight:600;color:var(--mu);background:var(--card);border:1px solid var(--line2);border-radius:999px;padding:3px 7px;box-shadow:0 1px 4px rgba(22,36,47,.14)}
+.body{padding:9px 10px 11px;display:flex;flex-direction:column;gap:3px}
+.body h3{font:600 13.5px/1.28 var(--sans);letter-spacing:.005em;text-transform:uppercase;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.body p{font-size:12px;color:var(--mu);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.body p.t{color:var(--tx);font-weight:500}
+@media(min-width:720px){.body h3{font-size:14.5px}.body p{font-size:12.5px}}
+
+/* skeleton */
+.sk .shot{background:linear-gradient(100deg,var(--elev) 30%,#FDF9F1 50%,var(--elev) 70%);background-size:200% 100%;animation:sh 1.3s linear infinite}
+.sk .l{height:11px;border-radius:4px;background:var(--elev);margin-bottom:6px}
+.sk .l.s{width:55%}
+@keyframes sh{to{background-position:-200% 0}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
+
+/* states */
+.state{text-align:center;padding:56px 16px;color:var(--mu)}
+.state b{display:block;font:500 21px/1.3 var(--dsp);color:var(--tx);margin-bottom:7px}
+.state button{margin-top:14px;background:var(--orange-deep);color:#fff;font-weight:600;border-radius:999px;padding:9px 20px;font-size:14px}
+
+/* calendar */
+.cal{max-width:860px;margin:6px auto 0}
+.calbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.calbar h2{font:500 21px/1.2 var(--dsp)}
+.calbar button{width:34px;height:34px;border:1px solid var(--line2);border-radius:50%;color:var(--mu);font-size:17px;line-height:1}
+.calbar button:hover{color:var(--tx);border-color:var(--ocean)}
+.dow,.cgrid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.dow div{text-align:center;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);padding-bottom:5px}
+.dow div span{display:none}
+@media(min-width:480px){.dow div span{display:inline}}
+.cell{aspect-ratio:1/1.05;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:9px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:3px;padding:5px 2px;color:var(--mu);font-size:13px}
+.cell.pad{background:transparent;border-color:transparent;box-shadow:none}
+.cell.has{color:var(--tx);cursor:pointer}
+.cell.has:hover{border-color:var(--ocean)}
+.cell.today{border-color:var(--orange);box-shadow:0 0 0 1px var(--orange)}
+.cell.today .num{color:var(--orange-tx);font-weight:700}
+.cell .num{font-weight:500}
+.cell .dots{display:flex;gap:2.5px}
+.cell .dots span{width:5px;height:5px;border-radius:50%}
+.cell .cnt{font-size:9.5px;color:var(--mu)}
+@media(min-width:600px){.cell{font-size:15px;gap:5px;padding:7px 3px}.cell .dots span{width:6px;height:6px}}
+
+/* weekly */
+.sec{margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}
+.sec>h2{font:500 24px/1.15 var(--dsp);letter-spacing:-.015em}
+.sec>p.sub{color:var(--mu);font-size:13.5px;margin-top:4px}
+.wgrid{display:grid;gap:14px;margin-top:16px;grid-template-columns:1fr}
+@media(min-width:680px){.wgrid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.wgrid{grid-template-columns:repeat(3,1fr)}}
+.wday{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px 13px;box-shadow:var(--shadow)}
+.wday h3{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-tx);margin-bottom:8px}
+.wrow{display:block;width:100%;text-align:left;padding:7px 0;border-top:1px solid var(--line)}
+.wrow:first-of-type{border-top:0}
+.wrow .tm{font-size:11.5px;color:var(--ocean);font-weight:600}
+.wrow .nm{font-size:14px;font-weight:500;margin:1px 0}
+.wrow .vn{font-size:12px;color:var(--mu)}
+.wrow:hover .nm{color:var(--ocean)}
+
+/* featured locals */
+.locals{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;margin:2px 0 18px;padding-bottom:2px}
+.locals::-webkit-scrollbar{display:none}
+.loc{flex:0 0 84%;min-width:0;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--sand);box-shadow:var(--shadow);border-radius:var(--r);padding:12px 14px 13px}
+@media(min-width:640px){.locals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;overflow:visible}.loc{flex:none}}
+.loc .lab{display:block;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-tx);font-weight:600}
+.loc h3{font:600 17px/1.2 var(--dsp);letter-spacing:-.01em;margin:4px 0 5px}
+.loc p{font-size:13px;line-height:1.5;color:var(--mu)}
+.loc .lnk{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px}
+.loc .lnk a{font-size:12.5px;font-weight:600;border:1px solid var(--sand);color:var(--gold-tx);border-radius:999px;padding:7px 14px}
+.loc .lnk a:hover{background:var(--gold-tx);border-color:var(--gold-tx);color:#fff;text-decoration:none}
+.loc .lnk a.ig{border-color:var(--line2);color:var(--mu);font-weight:500;background:var(--card)}
+.loc .lnk a.ig:hover{background:none;color:var(--tx);border-color:var(--ocean)}
+footer .locf{list-style:none;display:flex;flex-direction:column;gap:5px}
+footer .locf i{font-style:normal;color:var(--mu);opacity:.85;font-size:12px;display:block}
+
+/* cta */
+.cta{margin-top:34px;background:linear-gradient(135deg,rgba(226,87,43,.10),var(--card) 68%);border:1px solid var(--line2);border-radius:var(--r);padding:22px 20px;text-align:center}
+.cta h2{font:500 23px/1.2 var(--dsp);letter-spacing:-.01em}
+.cta p{color:var(--mu);font-size:14px;margin:6px auto 15px;max-width:36em}
+.btn{display:inline-block;background:var(--orange-deep);color:#fff;font-weight:600;font-size:14.5px;border-radius:999px;padding:11px 24px}
+.btn:hover{text-decoration:none;filter:brightness(1.1)}
+
+/* subscribe */
+.sub{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:15px 16px 16px;margin-bottom:24px;box-shadow:var(--shadow)}
+.sub h3{font:600 18px/1.2 var(--dsp);letter-spacing:-.01em;color:var(--tx)}
+.sub p{font-size:13px;color:var(--mu);margin:4px 0 11px;max-width:38em}
+.sub form{display:flex;flex-wrap:wrap;gap:8px}
+.sub input[type=email]{flex:1 1 220px;min-width:0;background:var(--bg);border:1px solid var(--line2);border-radius:999px;color:var(--tx);font:400 14.5px var(--sans);padding:10px 15px}
+.sub input[type=email]::placeholder{color:#97A0A8}
+.sub input[type=email]:focus{outline:2px solid var(--ocean);outline-offset:1px;border-color:var(--ocean)}
+.sub button{flex:0 0 auto;background:var(--orange-deep);color:#fff;font:600 14.5px var(--sans);border-radius:999px;padding:10px 22px}
+.sub button:hover{filter:brightness(1.07)}
+.sub button[disabled]{opacity:.6;cursor:default;filter:none}
+.sub .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.sub .msg{flex-basis:100%;font-size:13.5px;margin-top:2px}
+.sub .msg.ok{color:var(--glass-tx);font-weight:600}
+.sub .msg.bad{color:var(--orange-tx);font-weight:600}
+@media(min-width:640px){.sub{padding:18px 20px 19px}.sub h3{font-size:20px}}
+
+/* footer */
+footer{margin-top:44px;border-top:1px solid var(--line);background:var(--elev);padding:26px 0 34px;font-size:13.5px;color:var(--mu)}
+footer .fg{display:flex;flex-wrap:wrap;gap:22px 40px}
+footer h3{font:500 16px/1.2 var(--dsp);color:var(--tx);margin-bottom:7px}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+footer .about{max-width:30em}
+footer .tiny{margin-top:22px;padding-top:14px;border-top:1px solid var(--line);font-size:12px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}
+footer .tiny a.adm{color:var(--mu);opacity:.8}
+
+/* sheet */
+.back{position:fixed;inset:0;z-index:60;background:rgba(22,36,47,.42);backdrop-filter:blur(3px);display:flex;align-items:flex-end;justify-content:center;padding:0}
+.back[hidden]{display:none}
+.sheet{background:var(--card);border:1px solid var(--line2);box-shadow:0 -6px 40px rgba(22,36,47,.16);border-radius:18px 18px 0 0;width:100%;max-height:92vh;overflow-y:auto;-webkit-overflow-scrolling:touch;position:relative;animation:up .22s ease-out}
+@keyframes up{from{transform:translateY(18px);opacity:.6}}
+@media(min-width:700px){.back{align-items:center;padding:24px}.sheet{max-width:620px;border-radius:16px;max-height:88vh}}
+.sheet .x{position:absolute;top:11px;right:11px;z-index:2;width:34px;height:34px;border-radius:50%;background:var(--card);border:1px solid var(--line2);color:var(--tx);font-size:16px;line-height:1;box-shadow:0 1px 6px rgba(22,36,47,.18)}
+.hero{position:relative;aspect-ratio:16/9;background:var(--elev);overflow:hidden}
+.hero>img{width:100%;height:100%;object-fit:cover}
+.hero.gen{aspect-ratio:16/5}
+.hero .poster b,.hero .poster i{display:none}
+.hero .scrim{background:none}
+.sb{padding:16px 18px 26px}
+.sb h2{font:700 clamp(21px,5.6vw,28px)/1.14 var(--dsp);letter-spacing:-.02em;margin-bottom:9px}
+.kv{display:flex;gap:9px;font-size:14px;padding:7px 0;border-top:1px solid var(--line)}
+.kv:first-of-type{border-top:0;padding-top:0}
+.kv .k{flex:0 0 62px;color:var(--mu);font-size:12px;letter-spacing:.05em;text-transform:uppercase;padding-top:2px}
+.kv .v{flex:1;min-width:0}
+.pills{display:flex;flex-wrap:wrap;gap:5px;margin:11px 0}
+.pills .cat{position:static}
+.desc{font-size:14.5px;line-height:1.6;color:#2C3D49;margin:11px 0 4px;white-space:pre-wrap}
+.acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:17px}
+.acts a,.acts button{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:500;border:1px solid var(--line2);background:var(--card);color:var(--tx);border-radius:999px;padding:9px 15px;box-shadow:var(--shadow)}
+.acts a:hover,.acts button:hover{border-color:var(--ocean);text-decoration:none}
+.acts .p{background:var(--orange-deep);border-color:var(--orange-deep);color:#fff;font-weight:600}
+.acts .p:hover{filter:brightness(1.1)}
+
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:80;background:var(--tx);color:#FBF6EC;font-size:13.5px;font-weight:600;padding:10px 18px;border-radius:999px;box-shadow:0 6px 24px rgba(22,36,47,.28)}
+.toast[hidden]{display:none}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap topin">
+    <a class="mark" href="/">Rockaway <span>Events</span></a>
+    <div class="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg>
+      <input id="q" type="search" placeholder="Search events, venues" aria-label="Search events">
+    </div>
+    <nav class="toplinks">
+      <a href="/submit/">Submit</a>
+      <a href="#cal" id="navcal">Calendar</a>
+    </nav>
+  </div>
+</header>
+
+<section class="cond" id="cond" hidden aria-label="Beach conditions">
+  <div class="wrap"><div class="condrow" id="condrow"></div></div>
+  <div class="wrap"><div class="reasons" id="reasons" hidden></div></div>
+</section>
+
+<div class="filters">
+  <div class="wrap">
+    <div class="strip" id="days" role="group" aria-label="Filter by day"></div>
+    <div class="row2">
+      <div class="strip" id="cats" role="group" aria-label="Filter by category"></div>
+      <div class="seg" role="group" aria-label="View">
+        <button id="vfeed" class="on" aria-pressed="true">Feed</button>
+        <button id="vcal" aria-pressed="false">Calendar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="wrap" id="main">
+  <section class="locals" id="locals" aria-label="Featured locals"></section>
+  <div id="feed"></div>
+  <div id="calview" hidden></div>
+
+  <section class="sec" id="weekly" hidden>
+    <h2>Every week</h2>
+    <p class="sub">The standing stuff. Run clubs, markets, surf, yoga, trivia. Same time, every week.</p>
+    <div class="wgrid" id="wgrid"></div>
+  </section>
+
+  <section class="cta">
+    <h2>Know about something happening in Rockaway?</h2>
+    <p>Add it. Takes a minute, no account needed. We review every submission before it goes live.</p>
+    <a class="btn" href="/submit/">Submit an event</a>
+  </section>
+
+  <noscript><p style="padding:24px 0;color:#5C6670">Rockaway Events lists concerts, markets, surf sessions, run clubs, and community events across the Rockaway peninsula in Queens, New York. The live listings need JavaScript. You can also <a href="https://rockawayevents.org/calendar.ics">subscribe to the calendar feed</a> or <a href="/feed.xml">read the RSS feed</a>.</p></noscript>
+</main>
+
+<footer>
+  <div class="wrap">
+    <section class="sub" aria-labelledby="subh">
+      <h3 id="subh">Get the weekly Rockaway rundown</h3>
+      <p>One email on Thursday with what is happening that weekend. No ads, no sharing your address, unsubscribe any time.</p>
+      <form id="subform" novalidate>
+        <label class="hp" aria-hidden="true">Leave this empty<input type="text" name="website" id="subhp" tabindex="-1" autocomplete="off"></label>
+        <label class="sr" for="subemail">Email address</label>
+        <input id="subemail" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+        <button type="submit" id="subbtn">Subscribe</button>
+        <p class="msg" id="submsg" role="status" hidden></p>
+      </form>
+    </section>
+    <div class="fg">
+      <div>
+        <h3>Subscribe to the calendar</h3>
+        <ul>
+          <li><a href="webcal://rockawayevents.org/calendar.ics">Add to Apple or Google Calendar</a></li>
+          <li><a href="https://rockawayevents.org/calendar.ics">Plain .ics link</a></li>
+          <li><a href="/feed.xml">RSS feed</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Get in touch</h3>
+        <ul>
+          <li><a href="mailto:hello@rockawayevents.org">hello@rockawayevents.org</a></li>
+          <li><a href="/submit/">Submit an event</a></li>
+          <li><a href="#weekly">Weekly events</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Featured locals</h3>
+        <ul class="locf" id="locfoot"></ul>
+      </div>
+      <div class="about">
+        <h3>About</h3>
+        <p>Made by a Rockaway local. Free, no sign-up, no app. If something is missing or wrong, send a note and it gets fixed.</p>
+      </div>
+    </div>
+    <div class="tiny">
+      <span>Rockaway Events</span>
+      <span id="upd"></span>
+      <a class="adm" href="/admin/">Admin</a>
+    </div>
+  </div>
+</footer>
+
+<div class="back" id="back" hidden role="dialog" aria-modal="true" aria-labelledby="shtitle">
+  <div class="sheet" id="sheet"><button class="x" id="closeS" aria-label="Close">&#10005;</button><div id="sbody"></div></div>
+</div>
+<div class="toast" id="toast" hidden role="status"></div>
+
+<script>
+"use strict";
+var TZ="America/New_York";
+var DEV=/^(localhost|127\.0\.0\.1|\[::1\]|)$/.test(location.hostname);
+var CATC={"Music":"#B15CD6","Food & Drink":"#E07A3F","Run & Fitness":"#3FA7D6","Surf & Beach":"#2E9AA8",
+"Kids & Family":"#E4B363","Arts & Culture":"#D6538C","Community":"#7FB8A4","Market":"#C9A227",
+"Nightlife":"#7B61FF","Volunteer":"#5FBF8F","Outdoors":"#57A773","Sports":"#4C86E8","Other":"#8B949E"};
+var DOW=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+var MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+var MONF=["January","February","March","April","May","June","July","August","September","October","November","December"];
+var DAYF=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+// Standing sponsor slots. Append to this array to add a slot; the strip above the
+// feed and the compact footer list both render straight from it.
+var FEATURED_LOCALS=[
+  {
+    name:"Rockaway con Canela",
+    url:"https://rockawaycanela.nyc",
+    cta:"Order rolls",
+    instagram:"",
+    blurb:"Cinnamon rolls baked to order in Rockaway Park. Order online, pick up Saturdays 9 AM to 1 PM on Beach 98th.",
+    short:"Cinnamon rolls, Saturday pickup"
+  },
+  {
+    name:"Rockaway Trainer",
+    url:"https://rockawaytrainer.com",
+    cta:"Book a session",
+    instagram:"https://instagram.com/rockawaytrainer",
+    blurb:"In-home personal training on the peninsula. CSCS certified. 45-minute sessions, you supply the dumbbells.",
+    short:"In-home personal training"
+  }
+];
+
+var $=function(id){return document.getElementById(id)};
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){
+  return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function catColor(c){return CATC[c]||CATC.Other}
+function hex2rgb(h){
+  h=String(h).replace("#","");
+  if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];
+  var v=parseInt(h,16);
+  return[(v>>16)&255,(v>>8)&255,v&255];
+}
+function rgb2hex(a){
+  return"#"+a.map(function(v){
+    v=Math.max(0,Math.min(255,Math.round(v)));
+    return(v<16?"0":"")+v.toString(16);
+  }).join("");
+}
+function mix(a,b,t){
+  var x=hex2rgb(a),y=hex2rgb(b);
+  return rgb2hex([0,1,2].map(function(i){return x[i]+(y[i]-x[i])*t}));
+}
+function tint(c,t){return mix(c,"#FFFFFF",t)}   // toward white, for fills
+function shade(c,t){return mix(c,"#16242F",t)}  // toward ink, for small text
+// Pastel wash for an image-less card. Both stops stay light enough that ink
+// text over them clears 8:1, whatever the category hue is.
+function posterVars(c){
+  var col=catColor(c);
+  return "--c1:"+tint(col,.58)+";--c2:"+mix(col,"#FBF6EC",.86);
+}
+function catChip(c){
+  var col=catColor(c);
+  return '<span class="cat" style="--cbg:'+tint(col,.88)+";--cb:"+tint(col,.55)+
+    ";--cc:"+shade(col,.5)+'">'+esc(c)+"</span>";
+}
+
+/* ---------- dates: YYYY-MM-DD is an America/New_York calendar date ---------- */
+function nyToday(){
+  try{return new Intl.DateTimeFormat("en-CA",{timeZone:TZ,year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date())}
+  catch(e){return isoOf(new Date())}
+}
+function pd(s){ // "YYYY-MM-DD" -> local Date at midnight (never shifts the day)
+  if(!s)return null;
+  var p=String(s).slice(0,10).split("-");
+  if(p.length<3)return null;
+  var d=new Date(+p[0],+p[1]-1,+p[2]);
+  return isNaN(d)?null:d;
+}
+function isoOf(d){
+  var m=d.getMonth()+1,dd=d.getDate();
+  return d.getFullYear()+"-"+(m<10?"0":"")+m+"-"+(dd<10?"0":"")+dd;
+}
+function addDays(iso,n){var d=pd(iso);d.setDate(d.getDate()+n);return isoOf(d)}
+var TODAY=nyToday();
+var TOMORROW=addDays(TODAY,1);
+
+function fmtDayFull(iso){var d=pd(iso);return DAYF[d.getDay()]+", "+MONF[d.getMonth()]+" "+d.getDate()}
+function fmtDayShort(iso){var d=pd(iso);return DOW[(d.getDay()+6)%7]}
+function relLabel(iso){return iso===TODAY?"Today":iso===TOMORROW?"Tomorrow":""}
+function weekendSet(){
+  var d=pd(TODAY),dow=d.getDay(),out=[];
+  if(dow===6){out.push(TODAY,addDays(TODAY,1))}
+  else if(dow===0){out.push(TODAY)}
+  else{var toSat=6-dow;out.push(addDays(TODAY,toSat),addDays(TODAY,toSat+1))}
+  return out;
+}
+var WEEKEND=weekendSet();
+
+/* NY wall clock -> UTC instant (for .ics) */
+function tzOff(ms){
+  try{
+    var p={},parts=new Intl.DateTimeFormat("en-US",{timeZone:TZ,hour12:false,year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",second:"2-digit"}).formatToParts(new Date(ms));
+    for(var i=0;i<parts.length;i++)p[parts[i].type]=parts[i].value;
+    var h=p.hour==="24"?0:+p.hour;
+    return ms-Date.UTC(+p.year,+p.month-1,+p.day,h,+p.minute,+p.second);
+  }catch(e){return 0}
+}
+function nyToUTC(iso,hm){
+  var a=iso.split("-"),b=(hm||"00:00").split(":");
+  var guess=Date.UTC(+a[0],+a[1]-1,+a[2],+b[0]||0,+b[1]||0);
+  var o=tzOff(guess),t=guess+o,o2=tzOff(t);
+  if(o2!==o)t=guess+o2;
+  return new Date(t);
+}
+function pad(n){return(n<10?"0":"")+n}
+function utcStamp(d){return d.getUTCFullYear()+pad(d.getUTCMonth()+1)+pad(d.getUTCDate())+"T"+pad(d.getUTCHours())+pad(d.getUTCMinutes())+"00Z"}
+function localStamp(iso,hm){var b=(hm||"00:00").split(":");return iso.replace(/-/g,"")+"T"+pad(+b[0])+pad(+b[1])+"00"}
+function fmtClock(isoTime){
+  if(!isoTime)return"";
+  var d=new Date(isoTime);
+  if(isNaN(d))return"";
+  try{return new Intl.DateTimeFormat("en-US",{timeZone:TZ,hour:"numeric",minute:"2-digit"}).format(d)}
+  catch(e){return d.toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit"})}
+}
+
+/* ---------- state ---------- */
+var ALL=[],WARN=[],COND=null,VIEW="feed",DAY="all",CAT="All",FREE=false,Q="",CALM=null,CURRENT=null;
+
+/* ---------- fetch ---------- */
+function getJSON(path,dev){
+  return fetch(path).then(function(r){if(!r.ok)throw new Error("HTTP "+r.status);return r.json()})
+    .catch(function(err){
+      if(DEV&&dev)return fetch(dev).then(function(r){if(!r.ok)throw err;return r.json()});
+      throw err;
+    });
+}
+
+function boot(){
+  skeleton();
+  getJSON("/api/events","/dev/sample-events.json").then(function(d){
+    ALL=(d&&d.events)||[];
+    if(d&&d.today)TODAY=d.today,TOMORROW=addDays(TODAY,1),WEEKEND=weekendSet();
+    buildDays();buildCats();buildWeekly();
+    var h=location.hash;
+    render();
+    if(/^#e=/.test(h))openSheet(decodeURIComponent(h.slice(3)),true);
+    else if(h==="#cal"){VIEW="cal";markView();render()}
+    else if(h==="#weekly"){var w=$("weekly");if(w&&w.scrollIntoView)w.scrollIntoView()}
+    WARN=(d&&d.warnings)||[];
+    if(WARN.length)console.warn("events API warnings: "+WARN.join(" | "));
+    $("upd").textContent=d&&d.updated?"Updated "+ago(d.updated):"";
+    injectLD();
+  }).catch(function(e){
+    $("feed").innerHTML='<div class="state"><b>Could not load events</b>The listings are having a moment. Try again in a bit.'+
+      '<br><small>'+esc(e.message||e)+'</small><br><button id="retry">Try again</button></div>';
+    var r=$("retry");if(r)r.onclick=function(){boot()};
+  });
+  getJSON("/api/conditions","/dev/sample-conditions.json").then(renderCond).catch(function(){});
+}
+function ago(iso){
+  var m=Math.round((Date.now()-new Date(iso))/6e4);
+  if(isNaN(m))return"";
+  if(m<2)return"just now";
+  if(m<60)return m+" min ago";
+  var h=Math.round(m/60);
+  if(h<24)return h+(h===1?" hour ago":" hours ago");
+  var d=Math.round(h/24);return d+(d===1?" day ago":" days ago");
+}
+
+/* ---------- conditions ---------- */
+function renderCond(c){
+  if(!c)return;
+  COND=c;
+  var it=[],n=c.now||{},w=c.water||{},s=c.sun||{},lg=c.lifeguards||{};
+  function add(lab,val,tip){if(val)it.push('<div class="ci"'+(tip?' title="'+esc(tip)+'"':"")+
+    '><b>'+esc(val)+'</b><i>'+esc(lab)+'</i></div>')}
+  if(n.tempF!=null)add(n.skies||"Air",Math.round(n.tempF)+"°F");
+  if(w.tempF!=null)add("Water",Math.round(w.tempF)+"°F",w.source||"");
+  if(w.waveFt!=null)add("Waves",w.waveFt+" ft"+(w.wavePeriodS?" @ "+Math.round(w.wavePeriodS)+"s":""));
+  var t=(c.tides||[])[0];
+  if(t&&(t.timeLabel||t.time))add("Next tide",(t.type==="H"?"High":"Low")+" "+(t.timeLabel||fmtClock(t.time)));
+  if(n.uv!=null)add("UV",String(Math.round(n.uv)));
+  if(n.windMph!=null)add("Wind",Math.round(n.windMph)+" mph"+(n.windDir?" "+n.windDir:""));
+  // inSeason is the honest distinction: off duty at 7 PM in July is not the same as closed for the year
+  if(lg.onDuty!=null)add("Lifeguards",lg.onDuty?(lg.hours||"On duty"):(lg.inSeason===false?"Off season":"Off duty"),lg.season||"");
+  var rise=s.riseLabel||fmtClock(s.rise),set=s.setLabel||fmtClock(s.set);
+  if(rise&&set)add("Sun",rise+" / "+set);
+  var bs=c.beachScore,chip="";
+  if(bs&&bs.score!=null){
+    chip='<button class="score" id="scoreBtn" aria-expanded="false" aria-controls="reasons">'+
+      bs.score+'/10 <span class="q">· '+esc(bs.label||"")+'</span> <span aria-hidden="true">ⓘ</span></button>';
+  }
+  if(!it.length&&!chip)return;
+  $("condrow").innerHTML=(chip?'<div class="ci">'+chip+'</div>':"")+it.join("");
+  $("cond").hidden=false;
+  var b=$("scoreBtn");
+  if(b&&bs&&bs.reasons&&bs.reasons.length){
+    $("reasons").innerHTML="<ul>"+bs.reasons.map(function(r){return"<li>"+esc(r)+"</li>"}).join("")+"</ul>";
+    b.onclick=function(){
+      var hid=$("reasons").hidden;
+      $("reasons").hidden=!hid;
+      b.setAttribute("aria-expanded",String(hid));
+    };
+  }else if(b){b.disabled=true}
+}
+
+/* ---------- filter chips ---------- */
+function buildDays(){
+  var h='<button class="pill on" data-d="all">All</button>'+
+        '<button class="pill" data-d="'+TODAY+'">Today</button>'+
+        '<button class="pill" data-d="'+TOMORROW+'">Tomorrow</button>'+
+        '<button class="pill" data-d="weekend">Weekend</button>';
+  for(var i=2;i<16;i++){
+    var iso=addDays(TODAY,i),d=pd(iso);
+    h+='<button class="pill date" data-d="'+iso+'" aria-label="'+esc(fmtDayFull(iso))+'"><u>'+DOW[(d.getDay()+6)%7]+'</u><s>'+d.getDate()+'</s></button>';
+  }
+  $("days").innerHTML=h;
+  $("days").onclick=function(e){
+    var b=e.target.closest(".pill");if(!b)return;
+    DAY=b.dataset.d;markDays();
+    if(VIEW!=="feed"){VIEW="feed";markView()}
+    render();
+  };
+}
+function markDays(){
+  var n=$("days").children;
+  for(var i=0;i<n.length;i++)n[i].classList.toggle("on",n[i].dataset.d===DAY);
+}
+function buildCats(){
+  var seen={},list=[];
+  ALL.forEach(function(e){(e.category||[]).forEach(function(c){if(c&&!seen[c]){seen[c]=1;list.push(c)}})});
+  list.sort();
+  var h='<button class="pill on" data-c="All">All</button>';
+  list.forEach(function(c){h+='<button class="pill" data-c="'+esc(c)+'">'+esc(c)+'</button>'});
+  h+='<button class="pill free" data-c="__free">Free</button>';
+  $("cats").innerHTML=h;
+  $("cats").onclick=function(e){
+    var b=e.target.closest(".pill");if(!b)return;
+    if(b.dataset.c==="__free"){FREE=!FREE;b.classList.toggle("on",FREE)}
+    else{CAT=b.dataset.c;
+      var n=$("cats").children;
+      for(var i=0;i<n.length;i++)if(n[i].dataset.c!=="__free")n[i].classList.toggle("on",n[i].dataset.c===CAT);
+    }
+    render();
+  };
+}
+
+/* ---------- filtering ---------- */
+function onDay(e,iso){
+  var s=e.date,en=e.dateEnd||e.date;
+  return s<=iso&&iso<=en;
+}
+function matches(e){
+  if(DAY==="weekend"){if(!WEEKEND.some(function(d){return onDay(e,d)}))return false}
+  else if(DAY!=="all"){if(!onDay(e,DAY))return false}
+  if(CAT!=="All"&&(e.category||[]).indexOf(CAT)<0)return false;
+  if(FREE&&!(e.free||/free/i.test(e.cost||"")))return false;
+  if(Q){
+    var hay=((e.event||"")+" "+(e.venue||"")+" "+(e.description||"")+" "+(e.category||[]).join(" ")).toLowerCase();
+    if(hay.indexOf(Q)<0)return false;
+  }
+  return true;
+}
+
+/* ---------- cards ---------- */
+function skeleton(){
+  var h="",i;
+  for(i=0;i<8;i++)h+='<div class="card sk"><div class="shot"></div><div class="body"><div class="l"></div><div class="l s"></div></div></div>';
+  $("feed").innerHTML='<div class="dayhead"><h2>Loading</h2></div><div class="grid">'+h+"</div>";
+}
+function shotHTML(e,hero){
+  var c1=(e.category||[])[0]||"Other";
+  // the generated poster always sits underneath, so a missing or broken image still reads as a card
+  var inner='<div class="poster" style="'+posterVars(c1)+'"><b>'+esc(e.event||"Event")+"</b>"+
+    (e.venue?"<i>"+esc(e.venue)+"</i>":"")+"</div>";
+  if(e.image)inner+='<img src="'+esc(e.image)+'" alt="" loading="lazy" decoding="async" onerror="this.remove()"><div class="scrim"></div>';
+  if(hero)return inner;
+  var bad=[];
+  (e.category||[]).slice(0,1).forEach(function(c){bad.push(catChip(c))});
+  if(e.free||/^free/i.test(e.cost||""))bad.push('<span class="freeb">Free</span>');
+  var d=pd(e.date),tile=d?'<div class="tile" aria-hidden="true"><u>'+MON[d.getMonth()]+"</u><s>"+d.getDate()+"</s></div>":"";
+  var wk=e.recurring&&e.recurring!=="None"?'<span class="wk">'+(e.recurring==="Monthly"?"Monthly":"Weekly")+"</span>":"";
+  return inner+'<div class="badges">'+bad.join("")+"</div>"+tile+wk;
+}
+function cardHTML(e){
+  return '<button class="card" data-id="'+esc(e.id)+'">'+
+    '<div class="shot">'+shotHTML(e)+"</div>"+
+    '<div class="body">'+(e.image?"<h3>"+esc(e.event||"Event")+"</h3>":"")+
+    (e.time?'<p class="t">'+esc(e.time)+"</p>":"")+
+    (e.venue?"<p>"+esc(e.venue)+"</p>":"")+
+    "</div></button>";
+}
+
+/* ---------- feed ---------- */
+function render(){
+  $("calview").hidden=VIEW!=="cal";
+  $("feed").hidden=VIEW==="cal";
+  if(VIEW==="cal"){renderCal();return}
+
+  var list=ALL.filter(matches);
+  if(!list.length){
+    $("feed").innerHTML='<div class="state"><b>Nothing here yet</b>'+
+      (Q||CAT!=="All"||FREE||DAY!=="all"?"No events match those filters. Try clearing them.":
+        WARN.length?"One of the event sources is not answering right now, so the list is short. Try again shortly.":
+        "No upcoming events are listed right now. Check back soon.")+
+      '<br><button id="clr">Clear filters</button></div>';
+    var c=$("clr");if(c)c.onclick=clearAll;
+    return;
+  }
+  var groups={},order=[];
+  list.forEach(function(e){
+    // a multi-day event belongs under the day the visitor is looking at, not its start date
+    var k=e.date;
+    if(DAY!=="all"&&DAY!=="weekend")k=DAY;
+    else if(DAY==="weekend"){
+      for(var wi=0;wi<WEEKEND.length;wi++)if(onDay(e,WEEKEND[wi])){k=WEEKEND[wi];break}
+    }
+    if(!groups[k]){groups[k]=[];order.push(k)}
+    groups[k].push(e);
+  });
+  order.sort();
+  var h=order.map(function(k){
+    var items=groups[k].slice().sort(function(a,b){
+      if(!!b.featured!==!!a.featured)return b.featured?1:-1;
+      return (a.timeStart||"99:99").localeCompare(b.timeStart||"99:99");
+    });
+    var rel=relLabel(k);
+    return '<section><div class="dayhead"><h2>'+esc(fmtDayFull(k))+"</h2>"+
+      (rel?"<em>"+rel+"</em>":"")+"</div>"+
+      '<div class="grid">'+items.map(cardHTML).join("")+"</div></section>";
+  }).join("");
+  $("feed").innerHTML=h;
+}
+function clearAll(){
+  DAY="all";CAT="All";FREE=false;Q="";$("q").value="";
+  markDays();buildCats();render();
+}
+$("feed").addEventListener("click",function(e){
+  var b=e.target.closest(".card[data-id]");
+  if(b)openSheet(b.dataset.id);
+});
+
+/* ---------- calendar ---------- */
+function markView(){
+  $("vfeed").classList.toggle("on",VIEW==="feed");
+  $("vcal").classList.toggle("on",VIEW==="cal");
+  $("vfeed").setAttribute("aria-pressed",String(VIEW==="feed"));
+  $("vcal").setAttribute("aria-pressed",String(VIEW==="cal"));
+}
+$("vfeed").onclick=function(){VIEW="feed";markView();render()};
+$("vcal").onclick=function(){VIEW="cal";markView();render()};
+$("navcal").onclick=function(ev){ev.preventDefault();VIEW="cal";markView();render();$("main").scrollIntoView({block:"start"})};
+
+function renderCal(){
+  if(!CALM){var t=pd(TODAY);CALM={y:t.getFullYear(),m:t.getMonth()}}
+  var byDay={};
+  ALL.filter(function(e){
+    if(CAT!=="All"&&(e.category||[]).indexOf(CAT)<0)return false;
+    if(FREE&&!(e.free||/free/i.test(e.cost||"")))return false;
+    if(Q){var hay=((e.event||"")+" "+(e.venue||"")+" "+(e.description||"")).toLowerCase();if(hay.indexOf(Q)<0)return false}
+    return true;
+  }).forEach(function(e){
+    var s=pd(e.date),en=pd(e.dateEnd||e.date);
+    if(!s)return;
+    for(var d=new Date(s);d<=en;d.setDate(d.getDate()+1)){
+      var k=isoOf(d);(byDay[k]=byDay[k]||[]).push(e);
+      if(Object.keys(byDay).length>500)break;
+    }
+  });
+  var first=new Date(CALM.y,CALM.m,1);
+  var lead=(first.getDay()+6)%7;
+  var days=new Date(CALM.y,CALM.m+1,0).getDate();
+  var cells="",i;
+  for(i=0;i<lead;i++)cells+='<div class="cell pad"></div>';
+  for(i=1;i<=days;i++){
+    var iso=isoOf(new Date(CALM.y,CALM.m,i)),ev=byDay[iso]||[];
+    var dots="",seen={},k=0;
+    for(var j=0;j<ev.length&&k<3;j++){
+      var c=(ev[j].category||[])[0]||"Other";
+      if(seen[c])continue;seen[c]=1;k++;
+      dots+='<span style="background:'+shade(catColor(c),.16)+'"></span>';
+    }
+    cells+='<'+(ev.length?"button":"div")+' class="cell'+(ev.length?" has":"")+(iso===TODAY?" today":"")+'"'+
+      (ev.length?' data-iso="'+iso+'" aria-label="'+ev.length+' events on '+esc(fmtDayFull(iso))+'"':"")+'>'+
+      '<span class="num">'+i+"</span>"+
+      (dots?'<span class="dots">'+dots+"</span>":"")+
+      (ev.length?'<span class="cnt">'+ev.length+"</span>":"")+
+      "</"+(ev.length?"button":"div")+">";
+  }
+  var dowh=DOW.map(function(d){return"<div>"+d.charAt(0)+"<span>"+d.slice(1)+"</span></div>"}).join("");
+  $("calview").innerHTML='<div class="cal" id="cal"><div class="calbar">'+
+    '<button id="pm" aria-label="Previous month">&#8249;</button>'+
+    "<h2>"+MONF[CALM.m]+" "+CALM.y+"</h2>"+
+    '<button id="nm" aria-label="Next month">&#8250;</button></div>'+
+    '<div class="dow" aria-hidden="true">'+dowh+"</div>"+
+    '<div class="cgrid">'+cells+"</div>"+
+    '<p class="sub" style="color:var(--mu);font-size:13px;margin-top:12px;text-align:center">Tap a day to see what is on.</p></div>';
+  $("pm").onclick=function(){CALM.m--;if(CALM.m<0){CALM.m=11;CALM.y--}renderCal()};
+  $("nm").onclick=function(){CALM.m++;if(CALM.m>11){CALM.m=0;CALM.y++}renderCal()};
+  $("calview").querySelector(".cgrid").onclick=function(e){
+    var b=e.target.closest(".cell.has");if(!b)return;
+    DAY=b.dataset.iso;VIEW="feed";markView();markDays();render();
+    var p=$("days").querySelector('.pill.on');if(p&&p.scrollIntoView)p.scrollIntoView({block:"nearest",inline:"center"});
+    $("main").scrollIntoView({block:"start"});
+  };
+}
+
+/* ---------- weekly ---------- */
+function buildWeekly(){
+  var seen={},series=[];
+  ALL.forEach(function(e){
+    if(!e.seriesId&&(!e.recurring||e.recurring==="None"))return;
+    var k=e.seriesId||e.id;
+    if(seen[k])return;seen[k]=1;series.push(e);
+  });
+  if(!series.length){$("weekly").hidden=true;return}
+  var byDow={};
+  series.forEach(function(e){
+    var ds=(e.days&&e.days.length)?e.days:[DOW[(pd(e.date)?(pd(e.date).getDay()+6)%7:0)]];
+    ds.forEach(function(d){(byDow[d]=byDow[d]||[]).push(e)});
+  });
+  var h=DOW.filter(function(d){return byDow[d]}).map(function(d){
+    var rows=byDow[d].slice().sort(function(a,b){return (a.timeStart||"99:99").localeCompare(b.timeStart||"99:99")});
+    return '<div class="wday"><h3>'+DAYF[(DOW.indexOf(d)+1)%7]+"</h3>"+rows.map(function(e){
+      return '<button class="wrow" data-id="'+esc(e.id)+'">'+
+        (e.time?'<div class="tm">'+esc(e.time)+"</div>":"")+
+        '<div class="nm">'+esc(e.event||"")+"</div>"+
+        '<div class="vn">'+esc(e.venue||"")+(e.category&&e.category[0]?" · "+esc(e.category[0]):"")+"</div>"+
+        "</button>";
+    }).join("")+"</div>";
+  }).join("");
+  $("wgrid").innerHTML=h;
+  $("weekly").hidden=false;
+  $("wgrid").onclick=function(e){var b=e.target.closest(".wrow");if(b)openSheet(b.dataset.id)};
+}
+
+/* ---------- detail sheet ---------- */
+function byId(id){for(var i=0;i<ALL.length;i++)if(ALL[i].id===id)return ALL[i];return null}
+function mapsURL(e){
+  return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent((e.venue||"")+" "+(e.address||"Rockaway Beach, NY"));
+}
+function gcalURL(e){
+  var st,en;
+  if(e.timeStart){
+    st=localStamp(e.date,e.timeStart);
+    var b=e.timeStart.split(":"),h=(+b[0]+2)%24,dd=(+b[0]+2)>=24?addDays(e.date,1):e.date;
+    en=localStamp(dd,pad(h)+":"+pad(+b[1]||0));
+  }else{
+    st=e.date.replace(/-/g,"");
+    en=(e.dateEnd?addDays(e.dateEnd,1):addDays(e.date,1)).replace(/-/g,"");
+  }
+  var det=(e.description||"")+(e.url?"\n\n"+e.url:"")+"\n\nVia rockawayevents.org";
+  return "https://calendar.google.com/calendar/render?action=TEMPLATE"+
+    "&text="+encodeURIComponent(e.event||"Event")+
+    "&dates="+st+"/"+en+
+    "&ctz="+encodeURIComponent(TZ)+
+    "&details="+encodeURIComponent(det)+
+    "&location="+encodeURIComponent([e.venue,e.address].filter(Boolean).join(", "));
+}
+function icsText(e){
+  function f(s){return String(s||"").replace(/\\/g,"\\\\").replace(/[;,]/g,function(c){return"\\"+c}).replace(/\r?\n/g,"\\n")}
+  var L=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//rockawayevents.org//EN","CALSCALE:GREGORIAN","BEGIN:VEVENT",
+    "UID:"+e.id+"@rockawayevents.org","DTSTAMP:"+utcStamp(new Date())];
+  if(e.timeStart){
+    var s=nyToUTC(e.date,e.timeStart);
+    L.push("DTSTART:"+utcStamp(s),"DTEND:"+utcStamp(new Date(s.getTime()+72e5)));
+  }else{
+    L.push("DTSTART;VALUE=DATE:"+e.date.replace(/-/g,""),
+      "DTEND;VALUE=DATE:"+(e.dateEnd?addDays(e.dateEnd,1):addDays(e.date,1)).replace(/-/g,""));
+  }
+  L.push("SUMMARY:"+f(e.event),
+    "LOCATION:"+f([e.venue,e.address].filter(Boolean).join(", ")),
+    "DESCRIPTION:"+f((e.description||"")+(e.url?"\n"+e.url:"")+"\nVia rockawayevents.org"),
+    "URL:"+(e.url||"https://rockawayevents.org/#e="+e.id),
+    "END:VEVENT","END:VCALENDAR");
+  return L.map(fold).join("\r\n");
+}
+// RFC 5545 line folding, so Outlook and older clients accept the file
+function fold(line){
+  if(line.length<=74)return line;
+  var out=line.slice(0,74),i=74;
+  while(i<line.length){out+="\r\n "+line.slice(i,i+73);i+=73}
+  return out;
+}
+function slug(s){return String(s||"event").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,50)}
+
+function sheetHTML(e){
+  var dl=fmtDayFull(e.date);
+  if(e.dateEnd&&e.dateEnd!==e.date)dl+=" to "+fmtDayFull(e.dateEnd);
+  var cats=(e.category||[]).map(catChip).join("");
+  if(e.free||/^free/i.test(e.cost||""))cats+='<span class="freeb">Free</span>';
+  var a=[];
+  if(e.url)a.push('<a class="p" href="'+esc(e.url)+'" target="_blank" rel="noopener">'+(/ticket|eventbrite|dice|ra\.co/i.test(e.url)?"Tickets":"Info")+"</a>");
+  a.push('<a href="'+esc(gcalURL(e))+'" target="_blank" rel="noopener">Google Calendar</a>');
+  a.push('<button id="icsBtn">Download .ics</button>');
+  if(e.instagram)a.push('<a href="'+esc(e.instagram)+'" target="_blank" rel="noopener">Instagram</a>');
+  a.push('<button id="shareBtn">Share</button>');
+  return '<div class="hero'+(e.image?"":" gen")+'">'+shotHTML(e,true)+"</div><div class=\"sb\">"+
+    '<h2 id="shtitle">'+esc(e.event||"Event")+"</h2>"+
+    (cats?'<div class="pills">'+cats+"</div>":"")+
+    '<div class="kv"><span class="k">When</span><span class="v">'+esc(dl)+(e.time?"<br>"+esc(e.time):"")+
+      (e.recurring&&e.recurring!=="None"?'<br><span style="color:var(--mu)">'+esc(e.recurring)+(e.days&&e.days.length?", "+esc(e.days.join(", ")):"")+"</span>":"")+"</span></div>"+
+    (e.venue||e.address?'<div class="kv"><span class="k">Where</span><span class="v">'+esc(e.venue||"")+
+      (e.address?'<br><span style="color:var(--mu)">'+esc(e.address)+"</span>":"")+
+      '<br><a href="'+esc(mapsURL(e))+'" target="_blank" rel="noopener">Open in Google Maps</a></span></div>':"")+
+    (e.cost?'<div class="kv"><span class="k">Cost</span><span class="v">'+esc(e.cost)+"</span></div>":"")+
+    (e.description?'<p class="desc">'+esc(e.description)+"</p>":"")+
+    '<div class="acts">'+a.join("")+"</div>"+
+    (e.source?'<p style="color:var(--mu);opacity:.8;font-size:11.5px;margin-top:14px">Source: '+esc(e.source)+"</p>":"")+
+    "</div>";
+}
+var LASTFOCUS=null;
+function openSheet(id,replace){
+  var e=byId(id);
+  if(!e){if(replace)history.replaceState({},"",location.pathname);return}
+  CURRENT=e;LASTFOCUS=document.activeElement;
+  $("sbody").innerHTML=sheetHTML(e);
+  $("back").hidden=false;
+  document.body.style.overflow="hidden";
+  $("closeS").focus();
+  var ics=$("icsBtn");
+  if(ics)ics.onclick=function(){
+    try{
+      var blob=new Blob([icsText(e)],{type:"text/calendar;charset=utf-8"});
+      var u=URL.createObjectURL(blob),a=document.createElement("a");
+      a.href=u;a.download=slug(e.event)+".ics";document.body.appendChild(a);a.click();
+      setTimeout(function(){URL.revokeObjectURL(u);a.remove()},1500);
+    }catch(err){
+      location.href="data:text/calendar;charset=utf-8,"+encodeURIComponent(icsText(e));
+    }
+  };
+  var sh=$("shareBtn");
+  if(sh)sh.onclick=function(){
+    var url="https://rockawayevents.org/#e="+encodeURIComponent(e.id);
+    if(navigator.share){navigator.share({title:e.event||"Rockaway Events",url:url}).catch(function(){})}
+    else if(navigator.clipboard){navigator.clipboard.writeText(url).then(function(){toast("Link copied")}).catch(function(){toast(url)})}
+    else toast(url);
+  };
+  var h="#e="+encodeURIComponent(id);
+  if(replace)history.replaceState({sheet:id},"",h);
+  else if(location.hash!==h)history.pushState({sheet:id},"",h);
+}
+function closeSheet(pop){
+  if($("back").hidden)return;
+  $("back").hidden=true;$("sbody").innerHTML="";CURRENT=null;
+  document.body.style.overflow="";
+  if(LASTFOCUS&&LASTFOCUS.focus)LASTFOCUS.focus();
+  if(!pop){
+    if(history.state&&history.state.sheet)history.back();
+    else history.replaceState({},"",location.pathname+location.search);
+  }
+}
+$("closeS").onclick=function(){closeSheet()};
+$("back").addEventListener("click",function(e){if(e.target===$("back"))closeSheet()});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeSheet()});
+window.addEventListener("popstate",function(){
+  var m=/^#e=(.+)$/.exec(location.hash);
+  if(m){openSheet(decodeURIComponent(m[1]),true)}
+  else closeSheet(true);
+});
+
+var TT;
+function toast(msg){
+  var t=$("toast");t.textContent=msg;t.hidden=false;
+  clearTimeout(TT);TT=setTimeout(function(){t.hidden=true},2600);
+}
+
+/* ---------- search ---------- */
+var QT;
+$("q").addEventListener("input",function(e){
+  clearTimeout(QT);
+  var v=e.target.value.trim().toLowerCase();
+  QT=setTimeout(function(){Q=v;render()},140);
+});
+
+/* ---------- JSON-LD ---------- */
+function injectLD(){
+  var items=ALL.slice(0,60).map(function(e,i){
+    var o={"@type":"Event","name":e.event,"startDate":e.timeStart?e.date+"T"+e.timeStart:e.date,
+      "eventStatus":"https://schema.org/EventScheduled",
+      "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+      "url":e.url||"https://rockawayevents.org/#e="+e.id,
+      "location":{"@type":"Place","name":e.venue||"Rockaway Beach",
+        "address":{"@type":"PostalAddress","streetAddress":e.address||"","addressLocality":"Queens","addressRegion":"NY","addressCountry":"US"}}};
+    if(e.dateEnd)o.endDate=e.dateEnd;
+    if(e.image)o.image=e.image;
+    if(e.description)o.description=e.description.slice(0,300);
+    if(e.free)o.offers={"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://rockawayevents.org/#e="+e.id};
+    return {"@type":"ListItem","position":i+1,"item":o};
+  });
+  var s=document.createElement("script");
+  s.type="application/ld+json";
+  s.textContent=JSON.stringify({"@context":"https://schema.org","@type":"ItemList","name":"Upcoming events in the Rockaways","itemListElement":items});
+  document.head.appendChild(s);
+}
+
+function renderLocals(){
+  if(!FEATURED_LOCALS.length){$("locals").hidden=true;return}
+  $("locals").innerHTML=FEATURED_LOCALS.map(function(l){
+    return '<article class="loc"><span class="lab">Featured local</span>'+
+      "<h3>"+esc(l.name)+"</h3><p>"+esc(l.blurb)+"</p>"+
+      '<div class="lnk"><a href="'+esc(l.url)+'" target="_blank" rel="noopener">'+esc(l.cta)+"</a>"+
+      (l.instagram?'<a class="ig" href="'+esc(l.instagram)+'" target="_blank" rel="noopener">Instagram</a>':"")+
+      "</div></article>";
+  }).join("");
+  $("locfoot").innerHTML=FEATURED_LOCALS.map(function(l){
+    return '<li><a href="'+esc(l.url)+'" target="_blank" rel="noopener">'+esc(l.name)+"</a>"+
+      (l.short?"<i>"+esc(l.short)+"</i>":"")+"</li>";
+  }).join("");
+}
+renderLocals();
+
+/* ---------- weekly email signup ---------- */
+(function(){
+  var f=$("subform");
+  if(!f)return;
+  var btn=$("subbtn"),msg=$("submsg"),done=false;
+  function say(text,ok){
+    msg.textContent=text;
+    msg.className="msg "+(ok?"ok":"bad");
+    msg.hidden=false;
+  }
+  f.addEventListener("submit",function(ev){
+    ev.preventDefault();
+    if(done)return;
+    var email=$("subemail").value.trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){
+      say("That email does not look right. Check it and try again.",false);
+      $("subemail").focus();
+      return;
+    }
+    btn.disabled=true;
+    var was=btn.textContent;
+    btn.textContent="Sending";
+    msg.hidden=true;
+    fetch("/api/subscribe",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      // `website` is the honeypot: a real person never fills the off-screen field
+      body:JSON.stringify({email:email,website:$("subhp").value})
+    }).then(function(r){
+      return r.json().catch(function(){return{ok:r.ok}});
+    }).then(function(d){
+      if(d&&d.ok){
+        done=true;
+        f.querySelector("input[type=email]").hidden=true;
+        btn.hidden=true;
+        say("You're on the list.",true);
+      }else{
+        btn.disabled=false;btn.textContent=was;
+        say((d&&d.error)||"Could not subscribe right now. Try again in a minute.",false);
+      }
+    }).catch(function(){
+      btn.disabled=false;btn.textContent=was;
+      say("Could not reach the server. Check your connection and try again.",false);
+    });
+  });
+})();
+
+function syncTop(){
+  var h=document.querySelector(".top").offsetHeight;
+  document.documentElement.style.setProperty("--toph",h+"px");
+}
+syncTop();
+window.addEventListener("resize",syncTop);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(syncTop);
+
+boot();
+</script>
+</body>
+</html>

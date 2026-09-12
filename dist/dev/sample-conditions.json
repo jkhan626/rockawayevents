@@ -1,0 +1,117 @@
+{
+  "updated": "2026-09-12T11:00:00.000Z",
+  "now": {
+    "tempF": 74,
+    "feelsF": 76,
+    "windMph": 9,
+    "windDir": "SW",
+    "uv": 6,
+    "skies": "Partly sunny",
+    "precipChance": 10
+  },
+  "water": {
+    "tempF": 71,
+    "waveFt": 2.6,
+    "wavePeriodS": 8,
+    "waveDir": "SSE",
+    "source": "NDBC buoy 44065"
+  },
+  "tides": [
+    {
+      "type": "H",
+      "time": "2026-09-12T13:42:00-04:00",
+      "heightFt": 4.8,
+      "timeLabel": "1:42 PM"
+    },
+    {
+      "type": "L",
+      "time": "2026-09-12T19:58:00-04:00",
+      "heightFt": 0.4,
+      "timeLabel": "7:58 PM"
+    },
+    {
+      "type": "H",
+      "time": "2026-09-13T02:11:00-04:00",
+      "heightFt": 5.1,
+      "timeLabel": "2:11 AM"
+    },
+    {
+      "type": "L",
+      "time": "2026-09-13T08:26:00-04:00",
+      "heightFt": 0.2,
+      "timeLabel": "8:26 AM"
+    }
+  ],
+  "sun": {
+    "rise": "2026-09-12T06:34:00-04:00",
+    "set": "2026-09-12T19:07:00-04:00",
+    "riseLabel": "6:34 AM",
+    "setLabel": "7:07 PM"
+  },
+  "forecast": [
+    {
+      "date": "2026-09-12",
+      "day": "Sat",
+      "hi": 77,
+      "lo": 66,
+      "precip": 10,
+      "short": "Partly sunny"
+    },
+    {
+      "date": "2026-09-13",
+      "day": "Sun",
+      "hi": 79,
+      "lo": 68,
+      "precip": 20,
+      "short": "Mostly sunny"
+    },
+    {
+      "date": "2026-09-14",
+      "day": "Mon",
+      "hi": 75,
+      "lo": 64,
+      "precip": 50,
+      "short": "Showers likely"
+    },
+    {
+      "date": "2026-09-15",
+      "day": "Tue",
+      "hi": 72,
+      "lo": 61,
+      "precip": 15,
+      "short": "Breezy"
+    },
+    {
+      "date": "2026-09-16",
+      "day": "Wed",
+      "hi": 74,
+      "lo": 63,
+      "precip": 5,
+      "short": "Sunny"
+    }
+  ],
+  "beachScore": {
+    "score": 7,
+    "label": "Decent",
+    "reasons": [
+      "Water is 71F, warm enough for most people",
+      "Waves around 2 to 3 ft, easy swimming",
+      "Light southwest wind, 9 mph",
+      "UV index 6, bring sunscreen",
+      "Partly sunny, low chance of rain"
+    ]
+  },
+  "lifeguards": {
+    "onDuty": true,
+    "season": "Memorial Day weekend through September 13",
+    "hours": "10 AM to 6 PM",
+    "inSeason": true
+  },
+  "today": "2026-09-12",
+  "station": {
+    "tides": "8516663",
+    "buoy": "44065",
+    "lat": 40.5834,
+    "lon": -73.8155
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "count": 2,
+  "events": [
+    {
+      "id": "pend-1",
+      "event": "Beach 84th Street Stoop Sale",
+      "date": "2026-09-20",
+      "dateEnd": null,
+      "time": "10:00 AM - 3:00 PM",
+      "venue": "Beach 84th Street",
+      "address": "Beach 84th St & Rockaway Beach Blvd, Rockaway Beach, NY 11693",
+      "category": ["Market", "Community"],
+      "cost": "Free",
+      "free": true,
+      "url": "",
+      "instagram": "https://instagram.com/b84block",
+      "image": "",
+      "description": "Twelve houses on the block clearing out surfboards, bikes, records, and baby gear. Rain date the following Sunday.",
+      "recurring": "None",
+      "days": [],
+      "submitterName": "Dana R.",
+      "submitterEmail": "dana@example.com",
+      "submitted": "2026-09-11T18:42:00.000Z",
+      "source": "Community"
+    },
+    {
+      "id": "pend-2",
+      "event": "Thursday Sunset Paddle",
+      "date": "2026-09-17",
+      "dateEnd": null,
+      "time": "6:00 PM",
+      "venue": "Jamaica Bay, Beach Channel Drive launch",
+      "address": "Beach 88th St & Beach Channel Dr, Rockaway Beach, NY 11693",
+      "category": ["Outdoors", "Surf & Beach"],
+      "cost": "$10 board rental",
+      "free": false,
+      "url": "https://example.com/paddle",
+      "instagram": "",
+      "image": "",
+      "description": "Flat water paddle on the bay side, about an hour. Beginners fine, life vests provided. Cancelled if there is lightning.",
+      "recurring": "Weekly",
+      "days": ["Thu"],
+      "submitterName": "Marco",
+      "submitterEmail": "marco@example.com",
+      "submitted": "2026-09-12T09:15:00.000Z",
+      "source": "Community"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "name": "Rockaway Events",
+  "short_name": "Rockaway",
+  "description": "What's happening in the Rockaways. Events, weekly run clubs and markets, and beach conditions.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FBF6EC",
+  "theme_color": "#FBF6EC",
+  "lang": "en-US",
+  "categories": ["lifestyle", "entertainment", "travel"],
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    { "name": "Submit an event", "url": "/submit/" },
+    { "name": "Weekly events", "url": "/#weekly" }
+  ]
+}

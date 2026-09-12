@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Moderation | Rockaway Events</title>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#FBF6EC">
+<link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FBF6EC;--elev:#F3EAD8;--card:#FFFFFF;--line:#E6DCC8;--line2:#D8CBB0;
+--tx:#16242F;--mu:#5C6670;--ocean:#1F6F8B;--orange:#E2572B;--orange-deep:#C7481E;--orange-tx:#BF4318;
+--glass:#2E8B6E;--glassbg:#DDF1E8;--glass-tx:#1F6B53;--sand:#C9A96E;--gold-tx:#8A6D3B;
+--shadow:0 1px 2px rgba(22,36,47,.05);
+--dsp:'Fraunces',Georgia,serif;--sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}
+html{color-scheme:light}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--tx);font:400 15px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--ocean)}
+.wrap{max-width:760px;margin:0 auto;padding:0 14px}
+header{position:sticky;top:0;z-index:10;background:rgba(251,246,236,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.hin{display:flex;align-items:center;gap:10px;padding:11px 0}
+.mark{font:700 18px/1 var(--dsp);color:var(--tx);text-decoration:none;flex:1}
+.mark em{font-style:normal;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--orange-tx);display:block;margin-top:3px;font-family:var(--sans);font-weight:600}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+.gh{border:1px solid var(--line2);background:var(--card);border-radius:999px;padding:7px 14px;font-size:13px;box-shadow:var(--shadow)}
+.gh:hover{border-color:var(--ocean)}
+main{padding:20px 0 60px}
+h1{font:700 26px/1.15 var(--dsp);letter-spacing:-.02em;margin-bottom:8px}
+p.mu{color:var(--mu);font-size:14px}
+input,textarea,select{width:100%;background:var(--bg);border:1px solid var(--line2);border-radius:9px;
+color:var(--tx);font:400 14.5px var(--sans);padding:9px 11px}
+input:focus,textarea:focus{outline:2px solid var(--ocean);outline-offset:1px}
+textarea{min-height:78px;resize:vertical;line-height:1.45}
+.gate{max-width:380px;margin:40px auto;text-align:center}
+.gate input{text-align:center;letter-spacing:.12em;margin:14px 0 12px}
+.primary{background:var(--orange-deep);color:#fff;font-weight:600;border-radius:999px;padding:11px 24px;font-size:15px}
+.primary:hover{filter:brightness(1.1)}
+.item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:14px;box-shadow:var(--shadow)}
+.item h2{font:600 16px/1.25 var(--sans);margin-bottom:3px}
+.meta{font-size:12.5px;color:var(--mu);margin-bottom:11px}
+.meta b{color:var(--tx);font-weight:500}
+.fields{display:grid;grid-template-columns:1fr;gap:9px}
+@media(min-width:560px){.fields{grid-template-columns:1fr 1fr}.fields .full{grid-column:1/-1}}
+.fl{display:flex;flex-direction:column;gap:4px}
+.fl span{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--mu)}
+details{margin-top:10px;border-top:1px solid var(--line);padding-top:9px}
+summary{font-size:12.5px;color:var(--mu);cursor:pointer}
+dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13px;margin-top:8px}
+dt{color:var(--mu)}
+dd{overflow-wrap:anywhere}
+.acts{display:flex;gap:8px;margin-top:13px;flex-wrap:wrap}
+.ok{background:#22765C;color:#fff;font-weight:600;border-radius:999px;padding:10px 20px;font-size:14px;flex:1;min-width:120px}
+.no{background:var(--card);border:1px solid #E2B4A6;color:#B23F22;font-weight:500;border-radius:999px;padding:10px 20px;font-size:14px;flex:1;min-width:120px}
+.ok:hover,.no:hover{filter:brightness(1.12)}
+.busy{opacity:.5;pointer-events:none}
+.state{text-align:center;padding:46px 12px;color:var(--mu)}
+.state b{display:block;font:500 20px var(--dsp);color:var(--tx);margin-bottom:6px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:50;
+background:var(--tx);color:#FBF6EC;font-size:13.5px;font-weight:600;padding:10px 18px;border-radius:999px;box-shadow:0 6px 22px rgba(22,36,47,.28)}
+.toast[hidden]{display:none}
+.toast.bad{background:#B23F22}
+:focus-visible{outline:2px solid var(--ocean);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap hin">
+  <a class="mark" href="/">Rockaway Events<em>Moderation</em></a>
+  <button class="gh" id="refresh" hidden>Refresh</button>
+  <button class="gh" id="signout" hidden>Sign out</button>
+</div></header>
+
+<main class="wrap">
+  <div id="gate" class="gate" hidden>
+    <h1>Moderation key</h1>
+    <p class="mu">Paste the key to see pending submissions.</p>
+    <input id="key" type="password" autocomplete="current-password" placeholder="key" aria-label="Moderation key">
+    <button class="primary" id="go">Unlock</button>
+  </div>
+  <div id="list"></div>
+</main>
+
+<div class="toast" id="toast" hidden role="status"></div>
+
+<script>
+"use strict";
+var KEYNAME="re_mod_key";
+var DEV=/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
+var $=function(i){return document.getElementById(i)};
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){
+  return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+var TT;
+function toast(m,bad){
+  var t=$("toast");t.textContent=m;t.className="toast"+(bad?" bad":"");t.hidden=false;
+  clearTimeout(TT);TT=setTimeout(function(){t.hidden=true},bad?4200:2400);
+}
+function getKey(){try{return sessionStorage.getItem(KEYNAME)||""}catch(e){return ""}}
+function setKey(k){try{k?sessionStorage.setItem(KEYNAME,k):sessionStorage.removeItem(KEYNAME)}catch(e){}}
+
+function showGate(msg){
+  $("gate").hidden=false;$("list").innerHTML="";
+  $("refresh").hidden=true;$("signout").hidden=true;
+  if(msg)toast(msg,true);
+  $("key").focus();
+}
+$("go").onclick=function(){
+  var k=$("key").value.trim();
+  if(!k){toast("Enter the key",true);return}
+  setKey(k);$("key").value="";load();
+};
+$("key").addEventListener("keydown",function(e){if(e.key==="Enter")$("go").click()});
+$("refresh").onclick=function(){load()};
+$("signout").onclick=function(){setKey("");showGate()};
+
+var FIELDS=[
+  ["event","Event name",1],["date","Date",0],["dateEnd","End date",0],["time","Time",0],
+  ["venue","Venue",0],["address","Address",1],["cost","Cost",0],["category","Category (comma separated)",1],
+  ["url","Link",1],["instagram","Instagram",1],["image","Image URL",1]
+];
+
+function load(){
+  var key=getKey();
+  if(!key){showGate();return}
+  $("gate").hidden=true;
+  $("list").innerHTML='<div class="state">Loading pending submissions</div>';
+  fetch("/api/pending?key="+encodeURIComponent(key)).then(function(r){
+    if(r.status===401||r.status===403){setKey("");throw new Error("__auth")}
+    if(!r.ok)throw new Error("HTTP "+r.status);
+    return r.json();
+  }).catch(function(err){
+    // local dev only: /api/* does not exist without netlify dev
+    if(DEV&&err.message!=="__auth")return fetch("/dev/sample-pending.json").then(function(r){
+      if(!r.ok)throw err;return r.json()});
+    throw err;
+  }).then(function(d){
+    var items=(d&&(d.events||d.pending||d.items))||(Array.isArray(d)?d:[]);
+    $("refresh").hidden=false;$("signout").hidden=false;
+    render(items);
+  }).catch(function(e){
+    if(e.message==="__auth"){showGate("That key was rejected");return}
+    $("refresh").hidden=false;$("signout").hidden=false;
+    $("list").innerHTML='<div class="state"><b>Could not load</b>'+esc(e.message||e)+"</div>";
+  });
+}
+
+function render(items){
+  if(!items.length){
+    $("list").innerHTML='<div class="state"><b>Queue is clear</b>Nothing waiting for review.</div>';
+    return;
+  }
+  $("list").innerHTML='<h1>'+items.length+" pending</h1><p class=\"mu\" style=\"margin-bottom:16px\">Edit anything before approving. Edits are saved with the approval.</p>"+
+    items.map(card).join("");
+}
+// bound once: re-binding inside render would fire the moderate POST twice after a Refresh
+$("list").addEventListener("click",onClick);
+
+function card(e){
+  var id=esc(e.id);
+  var fs=FIELDS.map(function(f){
+    var v=e[f[0]];
+    if(f[0]==="category"&&Array.isArray(v))v=v.join(", ");
+    return '<label class="fl'+(f[2]?" full":"")+'"><span>'+f[1]+"</span>"+
+      '<input data-f="'+f[0]+'" value="'+esc(v||"")+'"></label>';
+  }).join("");
+  var sub=[];
+  if(e.submitterName||e.name)sub.push(["From",e.submitterName||e.name]);
+  if(e.submitterEmail||e.email)sub.push(["Email",e.submitterEmail||e.email]);
+  if(e.submitted)sub.push(["Submitted",e.submitted]);
+  if(e.source)sub.push(["Source",e.source]);
+  if(e.recurring&&e.recurring!=="None")sub.push(["Recurring",e.recurring+(e.days&&e.days.length?" ("+[].concat(e.days).join(", ")+")":"")]);
+  if(e.free)sub.push(["Free","yes"]);
+  return '<article class="item" data-id="'+id+'">'+
+    "<h2>"+esc(e.event||"Untitled")+"</h2>"+
+    '<div class="meta"><b>'+esc(e.date||"no date")+"</b>"+(e.time?" · "+esc(e.time):"")+(e.venue?" · "+esc(e.venue):"")+"</div>"+
+    '<div class="fields">'+fs+
+      '<label class="fl full"><span>Description</span><textarea data-f="description">'+esc(e.description||"")+"</textarea></label>"+
+    "</div>"+
+    (sub.length?"<details><summary>Submission details</summary><dl>"+sub.map(function(p){
+      return "<dt>"+esc(p[0])+"</dt><dd>"+esc(p[1])+"</dd>"}).join("")+"</dl></details>":"")+
+    '<div class="acts"><button class="ok" data-a="approve">Approve</button>'+
+    '<button class="no" data-a="reject">Reject</button></div></article>';
+}
+
+function onClick(ev){
+  var b=ev.target.closest("button[data-a]");
+  if(!b)return;
+  var item=b.closest(".item"),id=item.dataset.id,action=b.dataset.a;
+  if(action==="reject"&&!confirm("Reject this submission?"))return;
+  var edits={};
+  item.querySelectorAll("[data-f]").forEach(function(el){
+    var f=el.dataset.f,v=el.value.trim();
+    if(f==="category")edits[f]=v?v.split(",").map(function(s){return s.trim()}).filter(Boolean):[];
+    else edits[f]=v;
+  });
+  item.classList.add("busy");
+  fetch("/api/moderate",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({id:id,action:action,key:getKey(),edits:edits})
+  }).then(function(r){
+    if(r.status===401||r.status===403){setKey("");throw new Error("__auth")}
+    if(!r.ok)throw new Error("HTTP "+r.status);
+    return r.json().catch(function(){return{}});
+  }).then(function(){
+    toast(action==="approve"?"Approved, it is live":"Rejected");
+    item.remove();
+    if(!document.querySelector(".item"))render([]);
+  }).catch(function(e){
+    if(DEV&&e.message!=="__auth"){
+      toast((action==="approve"?"Approved":"Rejected")+" (local dev, nothing was written)");
+      item.remove();
+      if(!document.querySelector(".item"))render([]);
+      return;
+    }
+    item.classList.remove("busy");
+    if(e.message==="__auth"){showGate("That key was rejected");return}
+    toast("Failed: "+(e.message||e),true);
+  });
+}
+
+load();
+</script>
+</body>
+</html>

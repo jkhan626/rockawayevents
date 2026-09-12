@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Rockaway Events. What's happening in the Rockaways.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FDFAF3"/>
+      <stop offset="1" stop-color="#F3EAD8"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F08A56"/>
+      <stop offset="1" stop-color="#E2572B"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1000" cy="176" r="104" fill="url(#sun)"/>
+  <g fill="none" stroke="#1F6F8B" stroke-width="14" stroke-linecap="round" opacity=".85">
+    <path d="M0 500c40 0 40-30 80-30s40 30 80 30 40-30 80-30 40 30 80 30 40-30 80-30 40 30 80 30 40-30 80-30 40 30 80 30 40-30 80-30 40 30 80 30 40-30 80-30 40 30 80 30 40-30 80-30 40 30 80 30"/>
+    <path d="M0 566c40 0 40-30 80-30s40 30 80 30 40-30 80-30 40 30 80 30 40-30 80-30 40 30 80 30 40-30 80-30 40 30 80 30 40-30 80-30 40 30 80 30 40-30 80-30 40 30 80 30 40-30 80-30 40 30 80 30" opacity=".45"/>
+  </g>
+  <text x="88" y="256" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-weight="700" font-size="112" letter-spacing="-3" fill="#16242F">Rockaway</text>
+  <text x="88" y="366" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-weight="700" font-size="112" letter-spacing="-3" fill="#1F6F8B">Events</text>
+  <text x="90" y="424" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-weight="600" font-size="27" letter-spacing="1.4" fill="#5C6670">WHAT&#8217;S HAPPENING IN THE ROCKAWAYS</text>
+  <text x="90" y="604" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-weight="600" font-size="24" fill="#8A6D3B">rockawayevents.org</text>
+</svg>

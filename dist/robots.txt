@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /dev/
+
+Sitemap: https://rockawayevents.org/sitemap.xml

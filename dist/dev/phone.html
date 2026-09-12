@@ -1,0 +1,10 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>375 harness</title>
+<style>html,body{margin:0;background:#5C6670}
+iframe{width:375px;height:812px;border:0;display:block;margin:0 auto;background:#FBF6EC}</style></head>
+<body><iframe id="f" src="/"></iframe>
+<script>
+var qs=new URLSearchParams(location.search);
+if(qs.get("src"))document.getElementById("f").src=qs.get("src");
+if(qs.get("h"))document.getElementById("f").style.height=qs.get("h")+"px";
+</script>
+</body></html>

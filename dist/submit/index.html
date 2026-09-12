@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Submit an event | Rockaway Events</title>
+<meta name="description" content="Add an event to the Rockaway Events calendar. Free, no account needed. We review every submission before it goes live.">
+<link rel="canonical" href="https://rockawayevents.org/submit/">
+<meta name="theme-color" content="#FBF6EC">
+<meta property="og:title" content="Submit an event | Rockaway Events">
+<meta property="og:description" content="Add something happening in Rockaway. Free, no account needed.">
+<meta property="og:url" content="https://rockawayevents.org/submit/">
+<meta property="og:image" content="https://rockawayevents.org/og.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FBF6EC;--elev:#F3EAD8;--card:#FFFFFF;--line:#E6DCC8;--line2:#D8CBB0;
+--tx:#16242F;--mu:#5C6670;--ocean:#1F6F8B;--orange:#E2572B;--orange-deep:#C7481E;--orange-tx:#BF4318;
+--glass:#2E8B6E;--glassbg:#DDF1E8;--glass-tx:#1F6B53;--sand:#C9A96E;--gold-tx:#8A6D3B;
+--shadow:0 1px 2px rgba(22,36,47,.05);
+--dsp:'Fraunces',Georgia,serif;--sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+html{color-scheme:light}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--tx);font:400 15px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--ocean);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px}
+header{border-bottom:1px solid var(--line);background:var(--elev)}
+.hin{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0}
+.mark{font:700 20px/1 var(--dsp);color:var(--tx)}
+main{padding:26px 0 56px}
+h1{font:700 clamp(27px,7vw,36px)/1.1 var(--dsp);letter-spacing:-.02em}
+.lede{color:var(--mu);font-size:15px;margin:9px 0 4px;max-width:34em}
+.note{margin:18px 0 24px;background:var(--glassbg);border:1px solid rgba(46,139,110,.3);border-left:3px solid var(--glass);border-radius:10px;padding:12px 14px;font-size:14px;color:#1B3A31}
+form{display:flex;flex-direction:column;gap:17px}
+.f{display:flex;flex-direction:column;gap:6px}
+label{font-size:13px;font-weight:600;letter-spacing:.02em}
+label .req{color:var(--orange-tx)}
+.hint{font-size:12.5px;color:var(--mu)}
+input[type=text],input[type=date],input[type=url],input[type=email],select,textarea{
+width:100%;background:var(--card);border:1px solid var(--line2);border-radius:10px;color:var(--tx);box-shadow:var(--shadow);
+font:400 15px var(--sans);padding:11px 12px}
+input::placeholder,textarea::placeholder{color:#97A0A8}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--ocean);outline-offset:1px;border-color:var(--ocean)}
+textarea{min-height:120px;resize:vertical;line-height:1.5}
+select{appearance:none;background-image:linear-gradient(45deg,transparent 49%,var(--mu) 50%),linear-gradient(135deg,var(--mu) 50%,transparent 51%);background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px;background-repeat:no-repeat}
+.two{display:grid;grid-template-columns:1fr;gap:17px}
+@media(min-width:520px){.two{grid-template-columns:1fr 1fr}}
+.cbs{display:flex;flex-wrap:wrap;gap:7px}
+.cbs label{display:inline-flex;align-items:center;gap:6px;font-weight:400;font-size:13.5px;
+background:var(--card);border:1px solid var(--line2);border-radius:999px;padding:7px 13px;cursor:pointer;box-shadow:var(--shadow)}
+.cbs label:hover{border-color:var(--ocean)}
+.cbs input{accent-color:var(--ocean);width:15px;height:15px;margin:0}
+.cbs input:checked+span{color:var(--ocean);font-weight:600}
+.single{display:inline-flex;align-items:center;gap:8px;font-weight:400;font-size:14.5px;cursor:pointer}
+.single input{accent-color:var(--glass);width:17px;height:17px}
+.cbs input:checked+span{color:var(--ocean)}
+.count{font-size:12px;color:var(--mu);text-align:right}
+.count.over{color:var(--orange-tx);font-weight:600}
+.hp{position:absolute;left:-9999px}
+button[type=submit]{background:var(--orange-deep);color:#fff;font:600 16px var(--sans);border:0;border-radius:999px;padding:14px 26px;cursor:pointer;margin-top:6px}
+button[type=submit]:hover{filter:brightness(1.1)}
+fieldset{border:0}
+fieldset legend{font-size:13px;font-weight:600;letter-spacing:.02em;margin-bottom:7px}
+.sec{border-top:1px solid var(--line);padding-top:19px}
+.sec>h2{font:500 18px/1.2 var(--dsp);margin-bottom:14px}
+footer{border-top:1px solid var(--line);background:var(--elev);padding:22px 0 30px;font-size:13px;color:var(--mu)}
+:focus-visible{outline:2px solid var(--ocean);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap hin">
+  <a class="mark" href="/">Rockaway Events</a>
+  <a href="/" style="font-size:13.5px;color:var(--mu)">Back to events</a>
+</div></header>
+
+<main class="wrap">
+  <h1>Submit an event</h1>
+  <p class="lede">Anything happening on the peninsula. A show, a market, a cleanup, a run, a stoop sale. If it is open to people, it belongs here.</p>
+  <div class="note">We review every submission before it goes live, usually within a day. Free to list, and it stays free.</div>
+
+  <form name="event-submit" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/submit/thanks.html">
+    <input type="hidden" name="form-name" value="event-submit">
+    <p class="hp"><label>Do not fill this in: <input name="bot-field"></label></p>
+
+    <div class="f">
+      <label for="event">Event name <span class="req">*</span></label>
+      <input id="event" name="event" type="text" required maxlength="120" placeholder="Sunset Reggae on the Sand">
+    </div>
+
+    <div class="two">
+      <div class="f">
+        <label for="date">Date <span class="req">*</span></label>
+        <input id="date" name="date" type="date" required>
+      </div>
+      <div class="f">
+        <label for="endDate">End date</label>
+        <input id="endDate" name="endDate" type="date">
+        <span class="hint">Only for multi-day events.</span>
+      </div>
+    </div>
+
+    <div class="f">
+      <label for="time">Time</label>
+      <input id="time" name="time" type="text" maxlength="60" placeholder="7:00 PM, or 12 PM to 8 PM">
+      <span class="hint">Write it however people say it. Leave blank if it runs all day.</span>
+    </div>
+
+    <div class="two">
+      <div class="f">
+        <label for="venue">Venue <span class="req">*</span></label>
+        <input id="venue" name="venue" type="text" required maxlength="100" placeholder="Bungalow Bar">
+      </div>
+      <div class="f">
+        <label for="address">Address</label>
+        <input id="address" name="address" type="text" maxlength="140" placeholder="377 Beach 92nd St, Rockaway Beach">
+      </div>
+    </div>
+
+    <fieldset>
+      <legend>Category</legend>
+      <div class="cbs" id="cats"></div>
+    </fieldset>
+
+    <div class="two">
+      <div class="f">
+        <label for="cost">Cost</label>
+        <input id="cost" name="cost" type="text" maxlength="60" placeholder="$15, or Free, or Donation">
+      </div>
+      <div class="f" style="justify-content:flex-end">
+        <label class="single"><input type="checkbox" name="free" value="yes"> <span>This event is free</span></label>
+      </div>
+    </div>
+
+    <div class="two">
+      <div class="f">
+        <label for="url">Link</label>
+        <input id="url" name="url" type="url" placeholder="https://">
+        <span class="hint">Tickets, info, or an event page.</span>
+      </div>
+      <div class="f">
+        <label for="instagram">Instagram</label>
+        <input id="instagram" name="instagram" type="url" placeholder="https://instagram.com/...">
+      </div>
+    </div>
+
+    <div class="f">
+      <label for="image">Flyer or photo URL</label>
+      <input id="image" name="image" type="url" placeholder="https://">
+      <span class="hint">A direct image link. If you do not have one we make a poster for you.</span>
+    </div>
+
+    <div class="f">
+      <label for="description">Description <span class="req">*</span></label>
+      <textarea id="description" name="description" required maxlength="600" placeholder="What is it, who is it for, and anything people should know. Parking, cash only, rain plan."></textarea>
+      <span class="count" id="cnt">0 / 600</span>
+    </div>
+
+    <div class="sec">
+      <h2>Does it repeat?</h2>
+      <div class="f">
+        <label for="recurring">Recurring</label>
+        <select id="recurring" name="recurring">
+          <option value="None" selected>None, this is a one-off</option>
+          <option value="Weekly">Weekly</option>
+          <option value="Monthly">Monthly</option>
+        </select>
+      </div>
+      <fieldset id="daysWrap" hidden style="margin-top:15px">
+        <legend>Which days</legend>
+        <div class="cbs" id="days"></div>
+      </fieldset>
+    </div>
+
+    <div class="sec">
+      <h2>About you</h2>
+      <div class="two">
+        <div class="f">
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" maxlength="80">
+        </div>
+        <div class="f">
+          <label for="email">Your email <span class="req">*</span></label>
+          <input id="email" name="email" type="email" required placeholder="you@example.com">
+        </div>
+      </div>
+      <p class="hint" style="margin-top:8px">Only so we can ask a question if something is unclear. Never published, never on a list.</p>
+    </div>
+
+    <button type="submit">Submit event</button>
+  </form>
+</main>
+
+<footer><div class="wrap">
+  <a href="/">Rockaway Events</a> &nbsp;·&nbsp; <a href="mailto:hello@rockawayevents.org">hello@rockawayevents.org</a>
+</div></footer>
+
+<script>
+(function(){
+  var CATS=["Music","Food & Drink","Run & Fitness","Surf & Beach","Kids & Family","Arts & Culture",
+    "Community","Market","Nightlife","Volunteer","Outdoors","Sports","Other"];
+  var DAYS=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+  document.getElementById("cats").innerHTML=CATS.map(function(c){
+    return '<label><input type="checkbox" name="category" value="'+esc(c)+'"><span>'+esc(c)+"</span></label>"}).join("");
+  document.getElementById("days").innerHTML=DAYS.map(function(d){
+    return '<label><input type="checkbox" name="days" value="'+d+'"><span>'+d+"</span></label>"}).join("");
+
+  var rec=document.getElementById("recurring"),dw=document.getElementById("daysWrap");
+  function sync(){dw.hidden=rec.value==="None"}
+  rec.addEventListener("change",sync);sync();
+
+  var ta=document.getElementById("description"),cnt=document.getElementById("cnt");
+  function count(){cnt.textContent=ta.value.length+" / 600";cnt.classList.toggle("over",ta.value.length>=600)}
+  ta.addEventListener("input",count);count();
+
+  // today as a sensible minimum, America/New_York
+  try{
+    var t=new Intl.DateTimeFormat("en-CA",{timeZone:"America/New_York",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
+    document.getElementById("date").min=t;
+    document.getElementById("endDate").min=t;
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
